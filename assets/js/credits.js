@@ -237,5 +237,12 @@ window.PHOTO_CREDITS = {
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Nigiri_Sushi_(25966163204).jpg",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+ },
+ "takimoto": {
+  "title": "Dai-ichi Takimotokan.jpg",
+  "author": "Jiashiang",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dai-ichi_Takimotokan.jpg",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
  }
 };

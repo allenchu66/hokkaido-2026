@@ -106,7 +106,7 @@
       ["天數", esc(T.meta.lengthText)],
       ["人數", esc(T.meta.people)],
       ["交通", "大眾運輸：JR・地鐵・市電・巴士<br><span style=\"color:var(--muted);font-size:13px\">不自駕</span>"],
-      ["住宿", "札幌 GRANBELL HOTEL TANUKI<br><span style=\"color:var(--muted);font-size:13px\">12/17–12/22・5 晚</span><br>登別溫泉飯店<br><span style=\"color:var(--muted);font-size:13px\">12/22・1 晚（名稱待提供）</span>"],
+      ["住宿", "札幌 GRANBELL HOTEL TANUKI<br><span style=\"color:var(--muted);font-size:13px\">12/17–12/22・5 晚</span><br>登別 第一滝本館<br><span style=\"color:var(--muted);font-size:13px\">12/22・1 晚</span>"],
       ["航班", "星宇航空 JX318 ／ JX319<br><span style=\"color:var(--muted);font-size:13px\">台中 RMQ ⇄ 新千歲 CTS</span>"],
       ["區域", "札幌・小樽・登別"]
     ];

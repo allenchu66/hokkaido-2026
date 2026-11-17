@@ -20,7 +20,7 @@ window.TRIP = {
     lengthEn: "7 Days 6 Nights",
     people: "3 位大人",
     transport: "JR・地鐵・市電・巴士（不自駕）",
-    stays: "札幌 5 晚＋登別溫泉 1 晚",
+    stays: "札幌 5 晚＋登別 第一滝本館 1 晚",
     route: "Sapporo · Otaru · Noboribetsu",
     source: "Notion「2026北海道」",
     plannedAt: "2026/11/17",
@@ -51,8 +51,9 @@ window.TRIP = {
   places: {
     granbell: { name: "札幌グランベルホテル狸小路", zh: "GRANBELL HOTEL TANUKI, SAPPORO", kind: "stay", img: "tanuki", sample: true, sampleText: "狸小路示意",
       when: "12/17–12/22（5 晚）", note: "札幌市中央區南3条西8丁目10-1。", map: "札幌グランベルホテル狸小路" },
-    noboriHotel: { name: "登別溫泉飯店", zh: "名稱尚未提供", kind: "stay", img: "onsen", sample: true, sampleText: "登別溫泉街示意",
-      when: "12/22（1 晚）", note: "Notion 尚未填入飯店名稱；行李寄送／寄存安排也待確認。", flag: "c-hotel" },
+    noboriHotel: { name: "第一滝本館", zh: "Dai-ichi Takimotokan・登別溫泉", kind: "stay", img: "takimoto",
+      when: "12/22（1 晚）", note: "登別市登別溫泉町55，離地獄谷很近。入住 14:00、退房 10:00。",
+      mapUrl: "https://maps.app.goo.gl/qBdp9o2QTRVYTPav6", flag: "c-hotel" },
 
     station: { name: "JR 札幌站", zh: "Sapporo Station", kind: "spot", img: "station", map: "JR札幌駅" },
     tanuki: { name: "狸小路商店街", zh: "Tanukikoji", kind: "spot", img: "tanuki", note: "藥妝、便利商店都在這一帶。", map: "狸小路商店街" },
@@ -81,9 +82,10 @@ window.TRIP = {
       when: "12/18（五）20:30", status: "不接受訂位", statusTone: "calm", note: "薄野、南4条西2丁目；18:00 開門；現場排隊，可能候位。",
       map: "Parfaiteria PaL 札幌", links: [{ t: "店家營業資訊", u: "https://yoru-parfait-gaku.com/parfait/shop-info/" }] },
 
-    baal: { name: "Cafe BAAL", zh: "カフェバール・牛排飯", kind: "food", img: "steakdon", sample: true,
-      when: "12/19（六）11:00", status: "營業時間待確認", statusTone: "blue", note: "小樽市稲穂3丁目8-10（3 Chome-8-10 Inaho, Otaru）。依原計畫的 11:00 午餐。",
-      mapUrl: "https://maps.app.goo.gl/ekGmMSpPSbuvtrms5", flag: "c-baal" },
+    baal: { name: "CAFE' BAAL", zh: "カフェバール・牛排飯", kind: "food", img: "steakdon", sample: true,
+      when: "12/19（六）11:30–12:30", status: "不接受預約", statusTone: "calm",
+      note: "小樽市稲穂3丁目8-10。週二至週日 11:30–14:30、17:30–21:00；週一公休。現場候位，營業時間如有異動以店家公告為準。",
+      mapUrl: "https://maps.app.goo.gl/ekGmMSpPSbuvtrms5", links: [{ t: "營業資訊（Tabelog）", u: "https://tabelog.com/tw/hokkaido/A0106/A010601/1052877/" }] },
     otaruCanal: { name: "小樽運河", zh: "Otaru Canal", kind: "spot", img: "otaru-canal", note: "傍晚 18:00–18:40 看運河夜間點燈（依當年度活動與天氣）。", map: "小樽運河" },
     sakaimachi: { name: "堺町通", zh: "Sakaimachi Street", kind: "spot", img: "sakaimachi", map: "堺町通り 小樽" },
     musicbox: { name: "小樽音樂盒堂", zh: "Otaru Music Box Museum", kind: "spot", img: "musicbox", note: "同一帶還有北一硝子（玻璃小物）。", map: "小樽オルゴール堂 本館" },
@@ -174,14 +176,14 @@ window.TRIP = {
     {
       n: 3, date: "2026-12-19", md: "12.19", dow: "SAT", dowZh: "六",
       title: "小樽一日遊", sub: "運河・堺町通・LeTAO・天狗山夕陽",
-      focus: "11:00 Cafe BAAL、運河、堺町通、LeTAO、天狗山夕陽及運河夜景",
+      focus: "11:30 CAFE' BAAL、運河、堺町通、LeTAO、天狗山夕陽及運河夜景",
       cover: "otaru-canal",
       spots: ["baal", "otaruCanal", "sakaimachi", "musicbox", "letao", "tengu"],
       timeline: [
         { t: "09:30", title: "飯店出發", note: "薄野搭南北線到札幌，轉 JR 快速 Airport 或普通車到小樽", type: "move" },
-        { t: "10:30", t2: "10:55", title: "小樽街區散步", note: "預留車次及積雪步行時間", type: "spot" },
-        { t: "11:00", t2: "12:00", title: "Cafe BAAL 牛排飯", note: "依原計畫的 11:00 午餐", type: "food", place: "baal", flag: "c-baal" },
-        { t: "12:00", t2: "14:10", title: "小樽運河、堺町通、北一硝子、音樂盒堂、LeTAO", note: "LeTAO 下午茶／起司蛋糕、買小樽伴手禮", type: "spot", place: "sakaimachi" },
+        { t: "10:30", t2: "11:15", title: "小樽街區散步", note: "預留車次及積雪步行時間，11:15 左右前往 CAFE' BAAL 等候開門", type: "spot" },
+        { t: "11:30", t2: "12:30", title: "CAFE' BAAL 牛排飯", note: "11:30 開門；午間營業至 14:30，不接受預約，現場候位", type: "food", place: "baal" },
+        { t: "12:30", t2: "14:10", title: "小樽運河、堺町通、北一硝子、音樂盒堂、LeTAO", note: "LeTAO 下午茶／起司蛋糕、買小樽伴手禮；若午餐候位較久，縮短逛街時間", type: "spot", place: "sakaimachi" },
         { t: "約 14:25", title: "南小樽 → 小樽", note: "原計畫 JR 搭 1 站；若時間趕改計程車或縮短商店時間", type: "move" },
         { t: "14:50", t2: "15:30", title: "小樽站 → 天狗山", note: "中央巴士 9 號，冬季班次另查", type: "move" },
         { t: "15:30", t2: "16:50", title: "天狗山纜車、夕陽及夜景", note: "日落約 16:04，纜車遇風雪可能停駛", type: "spot", place: "tengu" },
@@ -189,7 +191,7 @@ window.TRIP = {
         { t: "18:00", t2: "18:40", title: "小樽運河夜間藍色點燈", note: "依當年度活動資訊與天氣", type: "spot", place: "otaruCanal" },
         { t: "19:00", t2: "後", title: "JR 回札幌＋晚餐", note: "晚餐待定，視體力安排壽司或拉麵", type: "food", flag: "c-dinner" }
       ],
-      notes: ["Notion 標註：保留原行程。"]
+      notes: ["CAFE' BAAL 週二至週日 11:30–14:30、17:30–21:00，週一公休；午餐調整至 11:30，14:50 前往天狗山的安排不變。"]
     },
     {
       n: 4, date: "2026-12-20", md: "12.20", dow: "SUN", dowZh: "日",
@@ -254,8 +256,8 @@ window.TRIP = {
         { t: "13:15", t2: "13:40", title: "離園、取行李、步行至登別站前", note: "如果第一場有看到企鵝就早點離開", type: "move" },
         { t: "約 13:50", title: "道南巴士 登別站前 → 登別溫泉", note: "班次以當日公告為準，車程約 25–30 分鐘", type: "move" },
         { t: "14:30", t2: "15:30", title: "登別地獄谷、溫泉街散步", note: "下雪注意腳下，日落早", type: "spot", place: "jigoku" },
-        { t: "15:30", t2: "16:00", title: "登別溫泉飯店 Check-in", note: "飯店名稱尚未提供", type: "stay", place: "noboriHotel", flag: "c-hotel" },
-        { t: "16:00", t2: "後", title: "泡湯、飯店晚餐", note: "以飯店用餐時間為主", type: "stay" }
+        { t: "15:30", t2: "16:00", title: "第一滝本館 Check-in", note: "入住 14:00 起；行李寄送／寄存安排待確認", type: "stay", place: "noboriHotel", flag: "c-hotel" },
+        { t: "16:00", t2: "後", title: "泡湯、飯店晚餐", note: "第一滝本館；以飯店用餐時間為主", type: "stay" }
       ],
       backup: {
         title: "如果錯過第一場：14:15 企鵝散步備案",
@@ -285,10 +287,10 @@ window.TRIP = {
       title: "登別 → 新千歲 → 台灣", sub: "早餐泡湯・機場直達巴士・伴手禮",
       focus: "早餐泡湯、機場直達巴士、機場買伴手禮、返程",
       cover: "onsen",
-      spots: ["onsen", "cts"],
+      spots: ["noboriHotel", "onsen", "cts"],
       timeline: [
-        { t: "07:30", t2: "09:30", title: "飯店早餐、泡溫泉、整理行李", note: "若昨天沒去地獄谷且天氣好，可在不趕車前提下散步", type: "stay" },
-        { t: "10:00", t2: "11:20", title: "退房、最後買小伴手禮", note: "至登別溫泉巴士站候車", type: "shop" },
+        { t: "07:30", t2: "09:30", title: "飯店早餐、泡溫泉、整理行李", note: "第一滝本館。若昨天沒去地獄谷且天氣好，可在不趕車前提下散步", type: "stay", place: "noboriHotel" },
+        { t: "10:00", t2: "11:20", title: "退房、最後買小伴手禮", note: "第一滝本館退房時間 10:00；至登別溫泉巴士站候車", type: "shop" },
         { t: "11:45", t2: "12:50", title: "預約制道南巴士：登別溫泉 → 新千歲機場國際線", note: "官方定期時刻，成人 ¥1,900–2,400 依上下車點不同；請事先預約，雪天可能延誤", type: "move", warn: "需事先預約",
           links: [{ t: "道南巴士時刻／預約", u: "https://www.donanbus.co.jp/map/noboribetsu_airport/" }] },
         { t: "12:50", t2: "14:00", title: "新千歲機場午餐、最後伴手禮", note: "ROYCE'、白色戀人、六花亭、北海道牛奶點心等，視航廈店家", type: "shop", place: "cts" },
@@ -323,7 +325,7 @@ window.TRIP = {
     { id: "kplace", text: "預約 12/18 18:30 德壽 K-place 燒肉，3 位（尚未訂）", link: "https://yoyaku.toreta.in/k-place/", linkText: "官方預約頁" },
     { id: "crab", done: true, text: "確認 12/21 場外市場帝王蟹店家（根室杉山水產 UME堂）", link: "https://maps.app.goo.gl/PvbUW3zJbGQ2npHG7", linkText: "地圖" },
     { id: "ma108", text: "核對 12/20 頭大佛公車真 108 冬季班表、藻岩山纜車天候", link: "https://transfer.navitime.biz/chuo-bus/pc/map/Top", linkText: "中央巴士查詢" },
-    { id: "nobori", text: "確認 12/22 登別溫泉飯店名稱與行李寄送／寄存安排" },
+    { id: "nobori", text: "確認 12/22 行李寄送到第一滝本館或在尼克斯寄存" },
     { id: "bus", text: "預訂 12/23 登別溫泉 → 新千歲機場直達巴士", link: "https://www.donanbus.co.jp/map/noboribetsu_airport/", linkText: "道南巴士官方資訊" },
     { id: "flight", done: true, text: "核對 12/23 回程航班時間（16:00 起飛，19:55 抵達）" },
     { id: "weather", text: "出發前查最新天氣、JR 與巴士是否停駛" }
@@ -336,10 +338,8 @@ window.TRIP = {
   confirms: [
     { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 尚未訂位",
       body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。剩下 12/18 18:30 德壽 K-place（3 位）在 Notion 寫「尚未訂」。", day: 2 },
-    { id: "c-hotel", level: "pending", title: "12/22 登別溫泉飯店名稱未提供",
-      body: "Notion 沒有填登別溫泉的飯店名稱，行李寄送到登別飯店或在尼克斯寄存的方式也待確認。", day: 6 },
-    { id: "c-baal", level: "pending", title: "12/19 Cafe BAAL 營業時間未確認",
-      body: "地址已確認：小樽市稲穂3丁目8-10。網路上查不到可靠的營業時間與公休日，請確認週六 11:00 是否已開門、是否需要排隊。", day: 3 },
+    { id: "c-hotel", level: "pending", title: "12/22 行李寄送／寄存安排待確認",
+      body: "登別住宿已確認為第一滝本館（入住 14:00、退房 10:00）。還要確認：12/22 從札幌帶著行李出發，是在尼克斯寄放，還是事先寄到第一滝本館。", day: 6 },
     { id: "c-dinner", level: "pending", title: "晚餐未定：12/19、12/21",
       body: "12/19 晚餐寫「待定，視體力安排壽司或拉麵」；12/21 只寫「札幌站或狸小路」吃晚餐兼採購，還沒指定餐廳。壽司已排在 12/20 根室花まる ココノススキノ店。" }
   ],
@@ -348,6 +348,7 @@ window.TRIP = {
     { t: "徳寿 K-place 官網", u: "https://www.tokuju.com/shop/k-place/" },
     { t: "德壽 K-place 預約", u: "https://yoyaku.toreta.in/k-place/" },
     { t: "大黑屋札幌2號店官方預約", u: "https://yoyaku.toreta.in/daikokuya-sapporo2go" },
+    { t: "CAFE' BAAL 營業資訊（週一公休）", u: "https://tabelog.com/tw/hokkaido/A0106/A010601/1052877/" },
     { t: "NOUILLES JAPONAISE とくいち 店家資訊（不接受訂位）", u: "https://tabelog.com/hokkaido/A0101/A010105/1073732/" },
     { t: "nana's green tea 札幌PARCO店", u: "https://sapporo.parco.jp/shop/detail/?cd=007628" },
     { t: "Parfaiteria PaL 店家營業資訊", u: "https://yoru-parfait-gaku.com/parfait/shop-info/" },
