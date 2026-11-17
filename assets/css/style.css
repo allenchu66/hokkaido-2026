@@ -461,6 +461,14 @@ figure { margin: 0; }
 .spot-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .spot-name { font-family: var(--f-serif); font-size: 16px; color: var(--espresso); letter-spacing: .04em; line-height: 1.45; }
 .spot-zh { font-size: 12.5px; color: var(--mocha); letter-spacing: .06em; }
+.spot-guide { margin: 4px 0 7px; }
+.spot-intro, .spot-story p { font-size: 13px; line-height: 1.85; color: var(--espresso); overflow-wrap: anywhere; }
+.spot-story { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 9px; }
+.spot-story summary { cursor: pointer; color: var(--blue-ink); font-size: 12.5px; line-height: 1.6; padding: 5px 0; }
+.spot-story summary:focus-visible { outline: 2px solid var(--blue-ink); outline-offset: 3px; border-radius: 2px; }
+.spot-story[open] summary { margin-bottom: 6px; }
+.spot-sources { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 8px; font-size: 11.5px; line-height: 1.6; }
+.spot-sources .text-link { font-size: inherit; overflow-wrap: anywhere; }
 .spot-when { font-family: var(--f-en); font-size: 15px; color: var(--espresso); letter-spacing: .02em; }
 .spot-note { font-size: 13px; color: var(--muted); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .food-card .spot-note, .food-note { -webkit-line-clamp: unset; display: block; }

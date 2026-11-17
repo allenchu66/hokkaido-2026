@@ -155,6 +155,16 @@
   }
 
   /* ---------- 每日行程 ---------- */
+  function guideHtml(id) {
+    var g = (T.guides || {})[id];
+    if (!g) return "";
+    var sources = (g.sources || []).map(function (s) { return ext(s.u, s.t); }).join("");
+    return '<div class="spot-guide"><p class="spot-intro">' + esc(g.intro) + '</p>' +
+      (g.story ? '<details class="spot-story"><summary>故事與背景</summary><p>' + esc(g.story) +
+        '</p><div class="spot-sources">' + sources + '</div></details>' :
+        '<div class="spot-sources">' + sources + '</div>') + '</div>';
+  }
+
   function spotCard(id) {
     var p = T.places[id];
     if (!p) return "";
@@ -167,6 +177,7 @@
       '<div class="spot-body">' +
         '<h5 class="spot-name">' + esc(p.name) + "</h5>" +
         (p.zh ? '<p class="spot-zh">' + esc(p.zh) + "</p>" : "") +
+        guideHtml(id) +
         (p.when ? '<p class="spot-when">' + esc(p.when) + "</p>" : "") +
         (p.note ? '<p class="spot-note">' + esc(p.note) + "</p>" : "") +
         '<div class="spot-foot">' + (p.status ? chip(p.status, p.statusTone) : "") + (p.flag ? flag(p.flag) : "") + placeLinks(p) + "</div>" +
@@ -279,6 +290,7 @@
         '<div class="food-body">' +
           '<div class="food-top"><span class="food-cat">' + esc(p.zh) + "</span>" + chip(p.status, p.statusTone) + "</div>" +
           '<h3 class="food-name">' + esc(p.name) + "</h3>" +
+          guideHtml(id) +
           '<p class="food-when">' + esc(p.when) + "</p>" +
           (p.note ? '<p class="food-note">' + esc(p.note) + "</p>" : "") +
           '<div class="spot-foot">' + (p.flag ? flag(p.flag) : "") + placeLinks(p) + "</div>" +
