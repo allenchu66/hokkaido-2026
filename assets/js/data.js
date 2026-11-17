@@ -120,8 +120,10 @@ window.TRIP = {
     onsen: { name: "登別溫泉街", zh: "Noboribetsu Onsen", kind: "spot", img: "onsen", map: "登別温泉" },
     cts: { name: "新千歲機場", zh: "New Chitose Airport", kind: "spot", img: "cts", note: "ROYCE'、白色戀人、六花亭、北海道牛奶點心等，視航廈店家。", map: "新千歳空港 国際線ターミナル" },
 
-    sushi: { name: "壽司", zh: "店家未定", kind: "food", img: "sushi", sample: true,
-      when: "12/19 或 12/21 晚餐擇一", status: "待決定", statusTone: "blue", flag: "c-dinner" }
+    hanamaru: { name: "回転寿司 根室花まる ココノススキノ店", zh: "迴轉壽司", kind: "food", img: "sushi", sample: true,
+      when: "12/20（日）晚餐", status: "不接受訂位", statusTone: "calm",
+      note: "南4条西4丁目1番1 ココノススキノ地下1階，市電「すすきの」站旁。11:00–21:00（最後點餐 20:30）。客滿時在店門口發券機抽號碼牌，掃 QR code 可遠端看還剩幾組、用 LINE 或 email 叫號；叫號 15 分鐘內沒到會取消，全員到齊才帶位。",
+      map: "回転寿司 根室花まる ココノススキノ店", links: [{ t: "官方店舖資訊", u: "https://www.sushi-hanamaru.com/store/details/cocono.html" }] }
   },
 
   /* ---------------------------------------------------------------------- */
@@ -188,10 +190,10 @@ window.TRIP = {
     },
     {
       n: 4, date: "2026-12-20", md: "12.20", dow: "SUN", dowZh: "日",
-      title: "札幌南區", sub: "頭大佛・摩艾石像・藻岩山",
-      focus: "頭大佛、摩艾石像、藻岩山（日落與夜景）",
+      title: "札幌南區", sub: "頭大佛・摩艾石像・藻岩山・根室花まる",
+      focus: "頭大佛、摩艾石像、藻岩山（日落與夜景）、晚餐根室花まる迴轉壽司",
       cover: "moai",
-      spots: ["moai", "atama", "moiwa"],
+      spots: ["moai", "atama", "moiwa", "hanamaru"],
       timeline: [
         { t: "08:55", title: "從狸小路飯店出發", note: "南北線從薄野到「真駒內」終點站", type: "move" },
         { t: "09:40", t2: "10:10", title: "真駒內站等車", note: "找中央巴士真 108 乘車處", type: "move" },
@@ -203,7 +205,8 @@ window.TRIP = {
         { t: "13:30", t2: "14:20", title: "真駒內站周邊午餐", note: "簡單吃，別排太遠", type: "food" },
         { t: "14:20", t2: "15:30", title: "前往藻岩山", note: "南北線返薄野／大通；搭市電至ロープウェイ入口，轉纜車山麓站接駁車或步行", type: "move" },
         { t: "15:30", t2: "17:30", title: "藻岩山纜車、山頂觀景台", note: "日落約 16:02，白天與夜景一次看；強風可能停駛", type: "spot", place: "moiwa" },
-        { t: "18:00", t2: "後", title: "市區晚餐與狸小路藥妝採購", note: "可逛松本清、札幌藥妝等，實際分店營業時間現場確認", type: "shop", place: "tanuki", flag: "c-dinner" }
+        { t: "18:00", title: "晚餐：回転寿司 根室花まる ココノススキノ店", note: "藻岩山下山後搭市電到「すすきの」站，店在 Cocono Susukino 地下 1 樓。不接受訂位，最後點餐 20:30；週日排隊可能很久，下山後直接過去抽號碼牌", type: "food", place: "hanamaru" },
+        { t: "飯後", title: "狸小路藥妝採購", note: "可逛松本清、札幌藥妝等，實際分店營業時間現場確認", type: "shop", place: "tanuki" }
       ],
       notes: []
     },
@@ -344,8 +347,8 @@ window.TRIP = {
       body: "Notion 沒有填登別溫泉的飯店名稱，行李寄送到登別飯店或在尼克斯寄存的方式也待確認。", day: 6 },
     { id: "c-baal", level: "pending", title: "12/19 Cafe BAAL 營業時間未確認",
       body: "地址已確認：小樽市稲穂3丁目8-10。網路上查不到可靠的營業時間與公休日，請確認週六 11:00 是否已開門、是否需要排隊。", day: 3 },
-    { id: "c-dinner", level: "pending", title: "晚餐未定：12/19、12/20、壽司",
-      body: "12/19 晚餐寫「待定，視體力安排壽司或拉麵」；12/20 晚上只寫「市區晚餐」；美食清單的壽司是「12/19 或 12/21 晚餐擇一」，尚未決定。" }
+    { id: "c-dinner", level: "pending", title: "晚餐未定：12/19、12/21",
+      body: "12/19 晚餐寫「待定，視體力安排壽司或拉麵」；12/21 只寫「札幌站或狸小路」吃晚餐兼採購，還沒指定餐廳。壽司已排在 12/20 根室花まる ココノススキノ店。" }
   ],
 
   links: [
