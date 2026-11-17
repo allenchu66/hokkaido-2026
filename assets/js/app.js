@@ -280,7 +280,7 @@
 
   /* ---------- 美食 ---------- */
   function renderFood() {
-    var order = ["daikokuya", "sama", "nanas", "kplace", "pal", "takinami", "baal", "letao", "hanamaru", "crab", "tokuichi", "jinguchaya", "hachikyo"];
+    var order = ["daikokuya", "sama", "nanas", "kplace", "pal", "takinami", "baal", "letao", "okushiba", "hanamaru", "crab", "tokuichi", "jinguchaya", "hachikyo"];
     $("#foodGrid").innerHTML = order.map(function (id) {
       var p = T.places[id];
       if (!p) return "";
