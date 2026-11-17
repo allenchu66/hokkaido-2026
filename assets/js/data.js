@@ -53,7 +53,7 @@ window.TRIP = {
       when: "12/17–12/22（5 晚）", note: "札幌市中央區南3条西8丁目10-1。", map: "札幌グランベルホテル狸小路" },
     noboriHotel: { name: "第一滝本館", zh: "Dai-ichi Takimotokan・登別溫泉", kind: "stay", img: "takimoto",
       when: "12/22（1 晚）", note: "登別市登別溫泉町55，離地獄谷很近。入住 14:00、退房 10:00。",
-      mapUrl: "https://maps.app.goo.gl/qBdp9o2QTRVYTPav6", flag: "c-hotel" },
+      mapUrl: "https://maps.app.goo.gl/qBdp9o2QTRVYTPav6", links: [{ t: "入住／寄存資訊", u: "https://takimotokan.co.jp/en/faq/" }] },
 
     station: { name: "JR 札幌站", zh: "Sapporo Station", kind: "spot", img: "station", map: "JR札幌駅" },
     tanuki: { name: "狸小路商店街", zh: "Tanukikoji", kind: "spot", img: "tanuki", note: "藥妝、便利商店都在這一帶。", map: "狸小路商店街" },
@@ -114,8 +114,8 @@ window.TRIP = {
       note: "付費區最晚入場 16:30；白色戀人霜淇淋。2026 聖誕燈飾官方點燈 16:00–19:00。", map: "白い恋人パーク",
       links: [{ t: "2026 點燈資訊", u: "https://www.shiroikoibitopark.jp/illumination/" }] },
 
-    nixe: { name: "登別尼克斯海洋公園", zh: "Noboribetsu Marine Park Nixe", kind: "spot", img: "nixe", note: "JR 登別站步行約 5 分鐘。",
-      map: "登別マリンパークニクス", links: [{ t: "官方冬季表演時刻", u: "https://nixe-aqua.com/attractions/winter/" }] },
+    nixe: { name: "登別尼克斯海洋公園", zh: "Noboribetsu Marine Park Nixe", kind: "spot", img: "nixe", note: "JR 登別站步行約 5 分鐘。12/22 入園時辦理行李直送第一滝本館，每件 ¥1,200；園區寄存每件 ¥500 作備案。",
+      map: "登別マリンパークニクス", links: [{ t: "官方冬季表演時刻", u: "https://nixe-aqua.com/attractions/winter/" }, { t: "官方行李配送／寄存資訊", u: "https://nixe-aqua.com/guide/" }] },
     penguin: { name: "企鵝散步", zh: "11:00 首選／14:15 備案", kind: "spot", img: "penguin", sample: true, sampleText: "企鵝散步示意",
       note: "最重要行程，建議提前 10 分鐘到。企鵝可能因天氣／氣溫取消。" },
     jigoku: { name: "登別地獄谷", zh: "Jigokudani", kind: "spot", img: "jigoku", note: "下雪注意腳下，日落早。", map: "登別地獄谷" },
@@ -240,25 +240,39 @@ window.TRIP = {
     {
       n: 6, date: "2026-12-22", md: "12.22", dow: "TUE", dowZh: "二",
       title: "札幌 → 登別", sub: "尼克斯水族館・企鵝散步・地獄谷・溫泉",
-      focus: "尼克斯水族館、企鵝 11:00 首選／14:15 備案、地獄谷、溫泉",
+      focus: "尼克斯交行李直送飯店、企鵝 11:00 首選／14:15 備案、地獄谷、溫泉",
       cover: "jigoku",
       spots: ["nixe", "penguin", "jigoku", "onsen", "noboriHotel"],
       timeline: [
-        { t: "08:00", title: "札幌狸小路飯店退房，帶行李到札幌車站", note: "提前確認尼克斯可寄放、行李配送登別飯店條件", type: "stay", flag: "c-hotel" },
+        { t: "08:00", title: "札幌狸小路飯店退房，帶行李到札幌車站", note: "行李帶到尼克斯再辦理配送；護照、貴重品、電子設備、藥品及下午用品另裝隨身包", type: "stay" },
         { t: "08:43", t2: "09:54", title: "札幌 → JR 登別站", note: "原計畫 JR 特急參考班次，訂票時核對時刻", type: "move", place: "station" },
-        { t: "09:54", t2: "10:20", title: "步行到尼克斯海洋公園、處理行李、入園", note: "JR 登別站步行約 5 分鐘", type: "move", place: "nixe" },
+        { t: "09:54", t2: "10:20", title: "步行到尼克斯、辦理行李直送第一滝本館、入園", note: "JR 登別站步行約 5 分鐘；在入口館服務台（ゲート館インフォメーション）交件，每件 ¥1,200。現場核對收件飯店與送達安排，保留收據；若當日無法配送，改用園區寄存", type: "move", place: "nixe" },
         { t: "10:30", t2: "10:45", title: "海狗表演①", note: "如果順利入園可以看", type: "spot" },
         { t: "10:45", t2: "11:00", title: "海豹餵食時間", note: "如果想卡第一場企鵝位置可略過", type: "spot" },
         { t: "11:00", t2: "11:15", title: "企鵝散步①（首選）", note: "最重要行程，建議提前 10 分鐘到", type: "spot", place: "penguin", star: true },
         { t: "11:25", t2: "11:40", title: "海豚表演②", note: "推薦", type: "spot" },
         { t: "11:50", t2: "12:00", title: "沙丁魚群表演①", note: "推薦", type: "spot" },
         { t: "12:00", t2: "13:15", title: "園內午餐、水族館自由參觀", note: "看企鵝館、水族展示", type: "food" },
-        { t: "13:15", t2: "13:40", title: "離園、取行李、步行至登別站前", note: "如果第一場有看到企鵝就早點離開", type: "move" },
+        { t: "13:15", t2: "13:40", title: "離園、步行至登別站前", note: "已辦配送，不需取回行李；只有使用園區寄存備案時，才到服務台領回行李", type: "move" },
         { t: "約 13:50", title: "道南巴士 登別站前 → 登別溫泉", note: "班次以當日公告為準，車程約 25–30 分鐘", type: "move" },
-        { t: "14:30", t2: "15:30", title: "登別地獄谷、溫泉街散步", note: "下雪注意腳下，日落早", type: "spot", place: "jigoku" },
-        { t: "15:30", t2: "16:00", title: "第一滝本館 Check-in", note: "入住 14:00 起；行李寄送／寄存安排待確認", type: "stay", place: "noboriHotel", flag: "c-hotel" },
+        { t: "14:30", t2: "15:30", title: "登別地獄谷、溫泉街散步", note: "行李由尼克斯配送，輕裝散步。若使用園區寄存備案，先到第一滝本館寄放行李，再視時間遊覽；下雪注意腳下", type: "spot", place: "jigoku" },
+        { t: "15:30", t2: "16:00", title: "第一滝本館 Check-in、確認行李配送狀態", note: "入住 14:00 起；行李預計 15:30–17:00 送達，可能晚於入住。向櫃檯確認領取方式，交通或天候可能延誤", type: "stay", place: "noboriHotel" },
         { t: "16:00", t2: "後", title: "泡湯、飯店晚餐", note: "第一滝本館；以飯店用餐時間為主", type: "stay" }
       ],
+      luggage: {
+        title: "12/22 行李安排：直送飯店為主、園區寄存備用",
+        rows: [
+          { label: "主方案", title: "尼克斯 → 第一滝本館｜每件 ¥1,200", note: "當日住宿登別溫泉的旅客可用，第一滝本館在配送名單內。09:00–14:30 受理，預計 15:30–17:00 送達；行李箱不限制尺寸與重量。" },
+          { label: "備案", title: "尼克斯園區寄存｜每件 ¥500", note: "大型或放不進置物櫃的行李可寄存。09:00–16:30 受理，最晚 17:00 前取回；離園時領回，自行帶到第一滝本館，先寄放再逛地獄谷。" }
+        ],
+        notes: [
+          "兩種方式都在入口館服務台（ゲート館インフォメーション）辦理；本次預計約 10:00 交件。建議備妥住宿確認資料，現場核對飯店名稱、收件資料並保留收據。",
+          "貴重品、易碎品、相機、電子設備、危險物及可能漏水的物品不受理；官網另註超過 ¥30,000 的物品不受理。護照、現金、藥品及下午會用到的物品請隨身攜帶。",
+          "配送可能因交通或天候延遲，15:30 入住時不一定已到。若當日無法配送，改用園區寄存；第一滝本館可在入住前寄放行李。"
+        ],
+        foot: "依官方資訊整理（2026/11/17 查核）；費用與服務以當日公告為準。",
+        links: [{ t: "尼克斯官方行李服務", u: "https://nixe-aqua.com/guide/" }, { t: "第一滝本館寄存／入住資訊", u: "https://takimotokan.co.jp/en/faq/" }]
+      },
       backup: {
         title: "如果錯過第一場：14:15 企鵝散步備案",
         rows: [
@@ -266,7 +280,7 @@ window.TRIP = {
           { t: "13:50–14:10", title: "前往企鵝散步區卡位", note: "以園方指示為準" },
           { t: "14:15–14:30", title: "企鵝散步②（備案）", note: "看完再離園" },
           { t: "14:45–15:00", title: "海豚表演③（可選）", note: "若還要看，會更晚到飯店" },
-          { t: "15:00 之後", title: "取行李、道南巴士至登別溫泉、飯店 Check-in", note: "這條路線當天的地獄谷要縮短或取消，別在天黑後硬走雪地" }
+          { t: "15:00 之後", title: "離園、道南巴士至登別溫泉、飯店 Check-in", note: "已配送不需取行李，使用寄存備案才需領回。地獄谷縮短或取消，別在天黑後硬走雪地" }
         ]
       },
       shows: {
@@ -325,7 +339,7 @@ window.TRIP = {
     { id: "kplace", text: "預約 12/18 18:30 德壽 K-place 燒肉，3 位（尚未訂）", link: "https://yoyaku.toreta.in/k-place/", linkText: "官方預約頁" },
     { id: "crab", done: true, text: "確認 12/21 場外市場帝王蟹店家（根室杉山水產 UME堂）", link: "https://maps.app.goo.gl/PvbUW3zJbGQ2npHG7", linkText: "地圖" },
     { id: "ma108", text: "核對 12/20 頭大佛公車真 108 冬季班表、藻岩山纜車天候", link: "https://transfer.navitime.biz/chuo-bus/pc/map/Top", linkText: "中央巴士查詢" },
-    { id: "nobori", text: "確認 12/22 行李寄送到第一滝本館或在尼克斯寄存" },
+    { id: "nobori-delivery-prep", text: "12/22 已選尼克斯直送第一滝本館：準備住宿確認資料、另裝隨身物品與下午用品", link: "https://nixe-aqua.com/guide/", linkText: "配送／寄存資訊" },
     { id: "bus", text: "預訂 12/23 登別溫泉 → 新千歲機場直達巴士", link: "https://www.donanbus.co.jp/map/noboribetsu_airport/", linkText: "道南巴士官方資訊" },
     { id: "flight", done: true, text: "核對 12/23 回程航班時間（16:00 起飛，19:55 抵達）" },
     { id: "weather", text: "出發前查最新天氣、JR 與巴士是否停駛" }
@@ -338,10 +352,7 @@ window.TRIP = {
   confirms: [
     { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 尚未訂位",
       body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。剩下 12/18 18:30 德壽 K-place（3 位）在 Notion 寫「尚未訂」。", day: 2 },
-    { id: "c-hotel", level: "pending", title: "12/22 行李寄送／寄存安排待確認",
-      body: "登別住宿已確認為第一滝本館（入住 14:00、退房 10:00）。還要確認：12/22 從札幌帶著行李出發，是在尼克斯寄放，還是事先寄到第一滝本館。", day: 6 },
-    { id: "c-dinner", level: "pending", title: "晚餐未定：12/19、12/21",
-      body: "12/19 晚餐寫「待定，視體力安排壽司或拉麵」；12/21 只寫「札幌站或狸小路」吃晚餐兼採購，還沒指定餐廳。壽司已排在 12/20 根室花まる ココノススキノ店。" }
+    { id: "c-dinner", level: "pending", title: "晚餐待訂：12/19、12/21" }
   ],
 
   links: [
@@ -358,6 +369,8 @@ window.TRIP = {
     { t: "北海道中央巴士 真108 查詢", u: "https://transfer.navitime.biz/chuo-bus/pc/map/Top" },
     { t: "藻岩山纜車官網", u: "https://mt-moiwa.jp/" },
     { t: "尼克斯官方冬季表演時間", u: "https://nixe-aqua.com/attractions/winter/" },
+    { t: "尼克斯行李直送飯店／園區寄存", u: "https://nixe-aqua.com/guide/" },
+    { t: "第一滝本館入住與行李寄存資訊", u: "https://takimotokan.co.jp/en/faq/" },
     { t: "登別溫泉 → 新千歲機場 巴士時刻／預約", u: "https://www.donanbus.co.jp/map/noboribetsu_airport/" }
   ],
 

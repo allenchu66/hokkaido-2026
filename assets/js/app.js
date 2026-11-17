@@ -202,8 +202,17 @@
   }
 
   function extraHtml(d) {
-    if (!d.backup && !d.shows) return "";
+    if (!d.luggage && !d.backup && !d.shows) return "";
     var html = '<div class="extra">';
+    if (d.luggage) {
+      html += '<section class="card extra-card luggage-card" aria-labelledby="luggage-' + d.n + '"><h5 id="luggage-' + d.n + '">' + esc(d.luggage.title) + '</h5><table class="mini-table"><tbody>' +
+        d.luggage.rows.map(function (r) {
+          return '<tr><th scope="row">' + esc(r.label) + '</th><td>' + esc(r.title) + '<span class="sub">' + esc(r.note) + '</span></td></tr>';
+        }).join("") + '</tbody></table><ul class="luggage-notes">' +
+        d.luggage.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join("") +
+        '</ul><p class="extra-foot">' + esc(d.luggage.foot) + '</p><div class="tl-links">' +
+        d.luggage.links.map(function (l) { return ext(l.u, l.t); }).join("") + '</div></section>';
+    }
     if (d.backup) {
       html += '<div class="card extra-card"><h5>' + esc(d.backup.title) + '</h5><table class="mini-table"><tbody>' +
         d.backup.rows.map(function (r) {
@@ -331,7 +340,7 @@
       return '<li class="cf reveal" id="cf-' + esc(c.id) + '">' +
         '<div class="cf-top"><span class="cf-n">' + (i + 1 < 10 ? "0" : "") + (i + 1) + "</span>" + chip(lv.label, tone) + "</div>" +
         "<h3>" + esc(c.title) + "</h3>" +
-        "<p>" + esc(c.body) + "</p>" +
+        (c.body ? "<p>" + esc(c.body) + "</p>" : "") +
         (c.day ? '<a class="text-link" href="#day-' + c.day + '">看 Day ' + c.day + " 行程</a>" : "") +
         "</li>";
     }).join("");

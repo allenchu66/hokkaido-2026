@@ -478,6 +478,11 @@ figure { margin: 0; }
 .mini-table tr.is-star td { color: var(--blue-ink); }
 .mini-table tr.is-star td:last-child::after { content: " ★"; }
 .extra-foot { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+.luggage-card { grid-column: 1 / -1; min-width: 0; }
+.luggage-card th { width: 4.5em; padding: 9px 12px 9px 0; border-top: 1px solid var(--line); text-align: left; vertical-align: top; font-weight: 500; color: var(--espresso); white-space: nowrap; }
+.luggage-card tr:first-child th { border-top: 0; }
+.luggage-notes { margin-top: 12px; padding-left: 1.3em; list-style: disc; font-size: 12.5px; line-height: 1.8; color: var(--muted); }
+.luggage-notes li + li { margin-top: 6px; }
 
 /* ---------- 美食 ---------- */
 .food { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
