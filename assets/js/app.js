@@ -160,10 +160,10 @@
     if (!p) return "";
     var kind = p.kind === "food" ? "餐飲" : p.kind === "stay" ? "住宿" : "景點";
     return '<article class="spot reveal">' +
-      '<div class="spot-img"><img src="' + IMG + p.img + '.jpg" alt="' + esc(p.name) + '" loading="lazy" decoding="async">' +
+      (p.img ? '<div class="spot-img"><img src="' + IMG + p.img + '.jpg" alt="' + esc(p.name) + '" loading="lazy" decoding="async">' +
         '<span class="spot-kind">' + kind + "</span>" +
         (p.sample ? '<span class="spot-sample">' + esc(p.sampleText || "料理示意") + "</span>" : "") +
-      "</div>" +
+      "</div>" : "") +
       '<div class="spot-body">' +
         '<h5 class="spot-name">' + esc(p.name) + "</h5>" +
         (p.zh ? '<p class="spot-zh">' + esc(p.zh) + "</p>" : "") +
@@ -269,13 +269,13 @@
 
   /* ---------- 美食 ---------- */
   function renderFood() {
-    var order = ["daikokuya", "sama", "nanas", "kplace", "pal", "baal", "letao", "hanamaru", "crab", "tokuichi"];
+    var order = ["daikokuya", "sama", "nanas", "kplace", "pal", "takinami", "baal", "letao", "hanamaru", "crab", "tokuichi", "jinguchaya", "kaiyoutei"];
     $("#foodGrid").innerHTML = order.map(function (id) {
       var p = T.places[id];
       if (!p) return "";
       return '<article class="food-card reveal">' +
-        '<div class="spot-img"><img src="' + IMG + p.img + '.jpg" alt="' + esc(p.name) + '" loading="lazy" decoding="async">' +
-          (p.sample ? '<span class="spot-sample">' + esc(p.sampleText || "料理示意") + "</span>" : "") + "</div>" +
+        (p.img ? '<div class="spot-img"><img src="' + IMG + p.img + '.jpg" alt="' + esc(p.name) + '" loading="lazy" decoding="async">' +
+          (p.sample ? '<span class="spot-sample">' + esc(p.sampleText || "料理示意") + "</span>" : "") + "</div>" : "") +
         '<div class="food-body">' +
           '<div class="food-top"><span class="food-cat">' + esc(p.zh) + "</span>" + chip(p.status, p.statusTone) + "</div>" +
           '<h3 class="food-name">' + esc(p.name) + "</h3>" +
