@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hokkaido Travel Journal · 2026/12/17–12/23</title>
+  <meta name="description" content="北海道冬日旅行手帳：2026/12/17–12/23 札幌・小樽・登別 行程、美食、待辦清單。">
+  <meta name="theme-color" content="#FAF6EF">
+  <meta property="og:title" content="HOKKAIDO TRAVEL JOURNAL">
+  <meta property="og:description" content="2026/12/17–12/23 札幌・小樽・登別 冬日旅行手帳">
+  <meta property="og:image" content="assets/img/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3ECE0'/%3E%3Cg stroke='%237D624C' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M32 14v36M16.4 23l31.2 18M16.4 41l31.2-18'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero.jpg">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+</head>
+<body>
+  <a class="skip" href="#itinerary">跳到行程</a>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#top" aria-label="回到首頁">
+      <span class="brand-mark" aria-hidden="true">✳︎</span>
+      <span class="brand-text">HOKKAIDO <em>’26</em></span>
+    </a>
+    <nav class="topnav" aria-label="主要選單">
+      <a href="#itinerary">行程</a>
+      <a href="#food">美食</a>
+      <a href="#checklist">清單</a>
+      <a href="#confirm" class="topnav-confirm">待確認<span class="badge" id="confirmCount"></span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- 首頁主視覺 -->
+    <section class="hero" aria-label="首頁">
+      <img class="hero-img" src="assets/img/hero.jpg" alt="冬季夜晚的小樽運河，雪地上點著雪燈" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">WINTER 2026 · 冬の北海道</p>
+        <h1 class="hero-title"><span>HOKKAIDO</span><span>TRAVEL JOURNAL</span></h1>
+        <p class="hero-zh" id="heroZh"></p>
+        <div class="hero-meta" id="heroMeta"></div>
+        <a class="hero-pill" id="heroPill" href="#itinerary"></a>
+      </div>
+      <p class="hero-credit" id="heroCredit"></p>
+    </section>
+
+    <!-- 旅行簡介 -->
+    <section class="section prologue" id="prologue">
+      <div class="wrap prologue-grid">
+        <div class="prologue-text">
+          <p class="kicker"><span>01</span>PROLOGUE</p>
+          <h2 class="h2">旅行簡介</h2>
+          <div id="introText"></div>
+          <div class="confirm-strip" id="confirmStrip"></div>
+        </div>
+        <aside class="facts card" aria-label="旅行資訊">
+          <p class="facts-title">TRIP NOTES</p>
+          <dl id="facts"></dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 航班 -->
+    <section class="section flights-sec" id="flights">
+      <div class="wrap">
+        <p class="kicker"><span>02</span>FLIGHTS</p>
+        <h2 class="h2">航班資訊</h2>
+        <div class="flights" id="flightList"></div>
+      </div>
+    </section>
+
+    <!-- 七天總覽 -->
+    <section class="section overview" id="overview">
+      <div class="wrap">
+        <p class="kicker"><span>03</span>AT A GLANCE</p>
+        <h2 class="h2">七天總覽</h2>
+        <ol class="ov-list" id="overviewList"></ol>
+        <aside class="winter card" aria-label="冬季提醒">
+          <p class="winter-title">冬季提醒 <span>· 整理自 Notion 各日備註</span></p>
+          <ul id="winterTips"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 每日行程 -->
+    <section class="section itinerary" id="itinerary" aria-label="每日行程">
+      <div class="wrap">
+        <p class="kicker"><span>04</span>ITINERARY</p>
+        <h2 class="h2">每日行程</h2>
+      </div>
+      <nav class="daybar" id="daybar" aria-label="切換日期"></nav>
+      <div id="dayList"></div>
+    </section>
+
+    <!-- 美食 -->
+    <section class="section food" id="food">
+      <div class="wrap">
+        <p class="kicker"><span>05</span>FOOD NOTES</p>
+        <h2 class="h2">美食手帳</h2>
+        <p class="lead">餐廳照片多為<strong>料理示意圖</strong>（非該店實拍），訂位狀態依 Notion 記錄。</p>
+        <div class="food-grid" id="foodGrid"></div>
+      </div>
+    </section>
+
+    <!-- 購物 -->
+    <section class="section shopping" id="shopping">
+      <div class="wrap">
+        <p class="kicker"><span>06</span>SHOPPING</p>
+        <h2 class="h2">購物・藥妝・伴手禮</h2>
+        <ul class="shop-list" id="shopList"></ul>
+      </div>
+    </section>
+
+    <!-- 出發前清單 -->
+    <section class="section checklist" id="checklist">
+      <div class="wrap narrow">
+        <p class="kicker"><span>07</span>BEFORE YOU GO</p>
+        <h2 class="h2">出發前需完成事項</h2>
+        <p class="lead">勾選會記在這支手機／這台電腦的瀏覽器裡，換裝置不會同步。</p>
+        <div class="progress" id="checkProgress"></div>
+        <ul class="check-list" id="checkList"></ul>
+      </div>
+    </section>
+
+    <!-- 待確認 -->
+    <section class="section confirm" id="confirm">
+      <div class="wrap narrow">
+        <p class="kicker"><span>08</span>PLEASE CHECK</p>
+        <h2 class="h2">需要你確認的地方</h2>
+        <p class="lead">以下是整理 Notion 時發現的矛盾或缺漏。網站<strong>沒有</strong>擅自更改行程，只先標記出來。</p>
+        <ol class="confirm-list" id="confirmList"></ol>
+      </div>
+    </section>
+
+    <!-- 官方連結 -->
+    <section class="section links" id="links">
+      <div class="wrap narrow">
+        <p class="kicker"><span>09</span>LINKS</p>
+        <h2 class="h2">重要官方連結</h2>
+        <ul class="link-list" id="linkList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap narrow">
+      <p class="footer-mark">HOKKAIDO TRAVEL JOURNAL</p>
+      <p class="footer-note" id="footerNote"></p>
+      <details class="credits">
+        <summary>照片來源與授權</summary>
+        <p>景點與料理照片來自 Wikimedia Commons，依各自的創用 CC 授權使用，並已縮小尺寸。標示「示意」者為料理或場景示意，非該店實拍。</p>
+        <ul id="creditList"></ul>
+      </details>
+    </div>
+  </footer>
+
+  <noscript><p class="noscript">這個網站需要開啟 JavaScript 才能顯示行程。</p></noscript>
+
+  <script src="assets/js/data.js?v=4"></script>
+  <script src="assets/js/credits.js?v=4"></script>
+  <script src="assets/js/app.js?v=4"></script>
+</body>
+</html>
