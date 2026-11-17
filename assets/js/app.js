@@ -103,9 +103,9 @@
 
     var rows = [
       ["日期", "2026/12/17（四）— 12/23（三）"],
-      ["天數", esc(T.meta.lengthText) + '<div class="flag-wrap">' + flag("c-length") + "</div>"],
+      ["天數", esc(T.meta.lengthText)],
       ["人數", esc(T.meta.people)],
-      ["交通", "JR・地鐵・市電・巴士<br><span style=\"color:var(--muted);font-size:13px\">Notion 註明：不自駕</span>" + '<div class="flag-wrap">' + flag("c-drive") + "</div>"],
+      ["交通", "大眾運輸：JR・地鐵・市電・巴士<br><span style=\"color:var(--muted);font-size:13px\">不自駕</span>"],
       ["住宿", "札幌 GRANBELL HOTEL TANUKI<br><span style=\"color:var(--muted);font-size:13px\">12/17–12/22・5 晚</span><br>登別溫泉飯店<br><span style=\"color:var(--muted);font-size:13px\">12/22・1 晚（名稱待提供）</span>"],
       ["航班", "星宇航空 JX318 ／ JX319<br><span style=\"color:var(--muted);font-size:13px\">台中 RMQ ⇄ 新千歲 CTS</span>"],
       ["區域", "札幌・小樽・登別"]
@@ -115,11 +115,10 @@
     }).join("");
 
     var conflicts = T.confirms.filter(function (c) { return c.level === "conflict"; }).length;
-    $("#confirmStrip").outerHTML =
+    $("#confirmStrip").outerHTML = T.confirms.length ?
       '<a class="confirm-strip" id="confirmStrip" href="#confirm"><span class="ico">!</span><span>' +
-      "整理 Notion 時發現 <b>" + T.confirms.length + " 項</b>需要你確認，其中 <b>" + conflicts +
-      " 項是資訊矛盾</b>（例如：你寫六天五夜・自駕，但 Notion 是七天六夜・不自駕）。網站先依 Notion 呈現，沒有擅自更改。" +
-      '<br><span class="go">查看待確認清單</span></span></a>';
+      "目前還有 <b>" + T.confirms.length + " 項</b>待確認或待補" + (conflicts ? "，其中 <b>" + conflicts + " 項是資訊矛盾</b>" : "") +
+      "。網站依 Notion 呈現，沒有擅自更改。" + '<br><span class="go">查看待確認清單</span></span></a>' : "";
     $("#confirmCount").textContent = T.confirms.length;
   }
 

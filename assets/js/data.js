@@ -19,7 +19,7 @@ window.TRIP = {
     lengthText: "7 天 6 夜",
     lengthEn: "7 Days 6 Nights",
     people: "3 位大人",
-    transport: "JR・地鐵・巴士（Notion 註明：不自駕）",
+    transport: "JR・地鐵・市電・巴士（不自駕）",
     stays: "札幌 5 晚＋登別溫泉 1 晚",
     route: "Sapporo · Otaru · Noboribetsu",
     source: "Notion「2026北海道」",
@@ -40,7 +40,7 @@ window.TRIP = {
     {
       no: "JX319", date: "2026/12/23（三）", from: "CTS", fromName: "新千歲機場", fromTerm: "國際航廈",
       dep: "16:00", to: "RMQ", toName: "台中國際機場", toTerm: "2 航廈", arr: "19:55",
-      dur: "4 小時 55 分", plane: "Airbus A321neo", cabin: "經濟艙", tz: "時間皆為當地時間", flag: "c-flight"
+      dur: "4 小時 55 分", plane: "Airbus A321neo", cabin: "經濟艙", tz: "時間皆為當地時間"
     }
   ],
 
@@ -64,7 +64,7 @@ window.TRIP = {
     suwa: { name: "札幌諏訪神社", zh: "Suwa Shrine", kind: "spot", img: "suwa", note: "神社參拜與御守，季節裝飾依現場。", map: "札幌諏訪神社" },
     hokudai: { name: "北海道大學 札幌校區", zh: "Hokkaido University", kind: "spot", img: "hokudai", note: "冬季雪景與克拉克像；博物館不強求。", map: "北海道大学 札幌キャンパス" },
     sama: { name: "Soup Curry SAMA 札幌大通店", zh: "湯咖哩", kind: "food", img: "soupcurry", sample: true,
-      when: "12/18（五）11:30", status: "已訂位", statusTone: "ok", note: "11:30 已確認訂位。", map: "スープカレー SAMA 大通店" },
+      when: "12/18（五）11:30", status: "已訂位", statusTone: "ok", note: "11:30 已確認訂位。南3条西5丁目33 エリオ狸小路 2F。", map: "スープカレー SAMA 大通店" },
     clock: { name: "札幌市時計台", zh: "Sapporo Clock Tower", kind: "spot", img: "clock", note: "以外觀及拍照為主，室內視開放狀況。", map: "札幌市時計台" },
     akarenga: { name: "北海道廳舊本廳舍", zh: "紅磚廳舍", kind: "spot", img: "akarenga", note: "以外觀及拍照為主，室內視開放狀況。", map: "北海道庁旧本庁舎" },
     nanas: { name: "nana's green tea 札幌PARCO店", zh: "抹茶甜點", kind: "food", img: "matcha", sample: true,
@@ -148,17 +148,20 @@ window.TRIP = {
     },
     {
       n: 2, date: "2026-12-18", md: "12.18", dow: "FRI", dowZh: "五",
-      title: "札幌北區＋市中心", sub: "諏訪神社・北大・SAMA・燒肉・夜芭菲",
-      focus: "諏訪神社、北海道大學、11:30 SAMA、抹茶咖啡、18:30 德壽燒肉、夜芭菲",
+      title: "札幌北區＋市中心", sub: "諏訪神社・紅磚・SAMA・北大・燒肉・夜芭菲",
+      focus: "諏訪神社、紅磚廳舍與時計台、11:30 SAMA、北海道大學、抹茶咖啡、18:30 德壽燒肉、夜芭菲",
       cover: "akarenga",
-      spots: ["suwa", "hokudai", "sama", "clock", "akarenga", "nanas", "xmas", "tvtower", "kplace", "pal"],
+      spots: ["suwa", "akarenga", "clock", "sama", "hokudai", "nanas", "xmas", "tvtower", "kplace", "pal"],
       timeline: [
-        { t: "08:40", title: "飯店出發", note: "走到東豐線車站，往北13條東", type: "move", flag: "c-morning" },
-        { t: "09:05", t2: "09:35", title: "札幌諏訪神社（Suwa Shrine）", note: "神社參拜與御守，季節裝飾依現場", type: "spot", place: "suwa" },
-        { t: "09:40", t2: "10:45", title: "北海道大學札幌校區", note: "走校園、冬季雪景與克拉克像；博物館不強求", type: "spot", place: "hokudai" },
-        { t: "10:45", t2: "11:25", title: "往大通／狸小路", note: "地鐵南北線等大眾運輸＋步行", type: "move" },
-        { t: "11:30", t2: "12:40", title: "Soup Curry SAMA 札幌大通店", note: "11:30 已確認訂位", type: "food", place: "sama" },
-        { t: "13:00", t2: "14:10", title: "札幌時計台、北海道廳舊本廳舍（紅磚）", note: "以外觀及拍照為主，室內視開放狀況", type: "spot", place: "akarenga" },
+        { t: "08:40", title: "飯店出發", note: "走到東豐線車站（大通），往北13條東", type: "move" },
+        { t: "09:10", t2: "09:50", title: "札幌諏訪神社（Suwa Shrine）", note: "神社參拜與御守，季節裝飾依現場", type: "spot", place: "suwa" },
+        { t: "09:50", t2: "10:20", title: "往北海道廳舊本廳舍", note: "東豐線 北13條東 → さっぽろ，步行到紅磚廳舍", type: "move" },
+        { t: "10:20", t2: "11:10", title: "北海道廳舊本廳舍（紅磚）、札幌時計台", note: "以外觀及拍照為主，室內視開放狀況（原排 13:00，與北海道大學對調）", type: "spot", place: "akarenga" },
+        { t: "11:10", t2: "11:30", title: "步行到 SAMA", note: "時計台 → 狸小路 5 丁目（南3条西5丁目），約 15 分鐘", type: "move" },
+        { t: "11:30", t2: "12:40", title: "Soup Curry SAMA 札幌大通店", note: "11:30 已確認訂位；南3条西5丁目33 エリオ狸小路 2F", type: "food", place: "sama" },
+        { t: "12:40", t2: "13:00", title: "往北海道大學", note: "地鐵南北線 大通 → 北12條，步行進校園", type: "move" },
+        { t: "13:00", t2: "14:00", title: "北海道大學札幌校區", note: "走校園、冬季雪景與克拉克像；博物館不強求（原排 09:40，移到午餐後，白天光線正好）", type: "spot", place: "hokudai" },
+        { t: "14:00", t2: "14:20", title: "往 PARCO", note: "南北線 北12條 → 大通，步行到札幌 PARCO", type: "move" },
         { t: "14:20", t2: "15:20", title: "nana's green tea 札幌PARCO店（5F）", note: "抹茶拿鐵、抹茶聖代或甜點，店家以當季菜單為準", type: "food", place: "nanas" },
         { t: "15:20", t2: "17:30", title: "大通商圈、聖誕市集／白色燈樹節、札幌電視塔", note: "市集 2026/11/20–12/25，11:00–21:00；入夜拍燈飾", type: "spot", place: "xmas" },
         { t: "17:30", t2: "18:20", title: "地鐵到札幌站", note: "前往 K-place，留候位時間", type: "move" },
@@ -227,7 +230,7 @@ window.TRIP = {
         { t: "14:20", t2: "16:00", title: "白色戀人公園、甜點、伴手禮", note: "付費區最晚入場 16:30；白色戀人霜淇淋", type: "spot", place: "shiroi" },
         { t: "16:00", t2: "17:10", title: "白色戀人公園 2026 聖誕燈飾", note: "官方點燈 16:00–19:00；先日景後夜景", type: "spot" },
         { t: "17:10", t2: "18:00", title: "宮之澤 → 大通，返回飯店", note: "東西線", type: "move" },
-        { t: "18:00", t2: "20:00", title: "晚餐與藥妝、伴手禮採購", note: "札幌站或狸小路；買藥妝、六花亭、ROYCE'、札幌農學校餅乾等；重物先放飯店", type: "shop", flag: "c-dinner" }
+        { t: "18:00", t2: "20:00", title: "晚餐與藥妝、伴手禮採購", note: "札幌站或狸小路；買藥妝、六花亭、ROYCE'、札幌農學校餅乾等；百貨地下街伴手禮也排在今天；重物先放飯店", type: "shop", flag: "c-dinner" }
       ],
       notes: ["場外市場與 Tokuichi 都吃很飽，可把 Tokuichi 改為 09:15 提前排隊／吃拉麵，帝王蟹之後再吃，依排隊與個人食量彈性調整。",
         "可選甜點備案：日本茶と和菓子 エフ（圓山公園站旁，週一一般 12:00 後），當天已經很滿，不強求排入。"]
@@ -290,7 +293,7 @@ window.TRIP = {
           links: [{ t: "道南巴士時刻／預約", u: "https://www.donanbus.co.jp/map/noboribetsu_airport/" }] },
         { t: "12:50", t2: "14:00", title: "新千歲機場午餐、最後伴手禮", note: "ROYCE'、白色戀人、六花亭、北海道牛奶點心等，視航廈店家", type: "shop", place: "cts" },
         { t: "14:00", t2: "左右", title: "國際線報到、安檢、出境", note: "以航空公司截止時間為準", type: "move" },
-        { t: "16:00", title: "搭機返台（JX319）", note: "Notion：此時間來自之前討論，請核對機票後再視需要調整巴士", type: "move", flag: "c-flight" }
+        { t: "16:00", title: "搭機返台（JX319）", note: "已核對機票：16:00 新千歲起飛，19:55 抵達台中", type: "move" }
       ],
       notes: []
     }
@@ -304,7 +307,7 @@ window.TRIP = {
     { where: "LeTAO／北一硝子周邊", when: "12/19 小樽", what: "起司蛋糕、餅乾、玻璃小物" },
     { where: "狸小路藥妝店", when: "12/20 或 12/21 晚上", what: "松本清、札幌藥妝等；不要買超重，注意退稅、液體與行李" },
     { where: "白色戀人公園", when: "12/21 下午", what: "白色戀人餅乾、限定商品、霜淇淋" },
-    { where: "札幌市區百貨地下街", when: "12/18 或 12/21 晚上", what: "六花亭、ROYCE'、札幌農學校、北菓樓等伴手禮", flag: "c-depachika" },
+    { where: "札幌市區百貨地下街", when: "12/21 晚上", what: "六花亭、ROYCE'、札幌農學校、北菓樓等伴手禮；百貨約晚上 8 點打烊，先逛" },
     { where: "新千歲機場", when: "12/23 中午", what: "最後補買食品、機場限定商品；保留報到時間" }
   ],
 
@@ -322,7 +325,7 @@ window.TRIP = {
     { id: "ma108", text: "核對 12/20 頭大佛公車真 108 冬季班表、藻岩山纜車天候", link: "https://transfer.navitime.biz/chuo-bus/pc/map/Top", linkText: "中央巴士查詢" },
     { id: "nobori", text: "確認 12/22 登別溫泉飯店名稱與行李寄送／寄存安排" },
     { id: "bus", text: "預訂 12/23 登別溫泉 → 新千歲機場直達巴士", link: "https://www.donanbus.co.jp/map/noboribetsu_airport/", linkText: "道南巴士官方資訊" },
-    { id: "flight", text: "核對 12/23 回程航班時間（先前討論為 16:00 起飛）" },
+    { id: "flight", done: true, text: "核對 12/23 回程航班時間（16:00 起飛，19:55 抵達）" },
     { id: "weather", text: "出發前查最新天氣、JR 與巴士是否停駛" }
   ],
 
@@ -331,16 +334,6 @@ window.TRIP = {
      level: conflict（資訊矛盾）/ tight（時間偏緊）/ pending（待確認・待補）
      ---------------------------------------------------------------------- */
   confirms: [
-    { id: "c-length", level: "conflict", title: "天數：六天五夜 還是 七天六夜？",
-      body: "你的需求寫「六天五夜」，但 2026/12/17–12/23 是 7 天 6 夜，Notion 也寫「7 天 6 夜」（札幌 5 晚＋登別 1 晚）。網站目前依 Notion 顯示 7 天 6 夜。" },
-    { id: "c-drive", level: "conflict", title: "交通方式：自駕 還是 大眾運輸？",
-      body: "你的需求寫「自駕旅行」，但 Notion 明確寫「3 位大人，不自駕」，每天的移動都是 JR、地鐵、市電與巴士。網站依 Notion 呈現大眾運輸，沒有加入租車資訊。如果要改成自駕，12/19 小樽、12/20 頭大佛、12/22–23 登別的時間與交通都要重排。" },
-    { id: "c-depachika", level: "conflict", title: "百貨地下街伴手禮：12/18 晚上排不進去",
-      body: "購物清單寫「札幌市區百貨地下街：12/18 或 12/21 晚上」，但 12/18 晚上已排 18:30–20:00 德壽燒肉、20:30 夜芭菲，而百貨地下街一般晚上 8 點左右打烊。實際上只剩 12/21 18:00–20:00 的採購時段可用，請確認。", day: 5 },
-    { id: "c-morning", level: "tight", title: "12/18 早上兩段移動時間偏緊",
-      body: "飯店在南3条西8丁目，走到最近的東豐線車站（大通）約 10–15 分鐘，08:40 出發、09:05 到諏訪神社有點趕。諏訪神社 → 北海道大學只留 5 分鐘（09:35→09:40），實際步行約 10–15 分鐘。行程未更動，提醒你衡量。", day: 2 },
-    { id: "c-flight", level: "pending", title: "回程航班 16:00：Notion 截圖與待辦一致",
-      body: "Notion 待辦寫「12/23 回程 16:00 尚未與機票直接核對」，但同一頁的航班截圖顯示 JX319 12/23 16:00 新千歲 → 19:55 台中。兩者一致；如果截圖就是你的電子機票，這項可以勾掉。", day: 7 },
     { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 尚未訂位",
       body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。剩下 12/18 18:30 德壽 K-place（3 位）在 Notion 寫「尚未訂」。", day: 2 },
     { id: "c-hotel", level: "pending", title: "12/22 登別溫泉飯店名稱未提供",
