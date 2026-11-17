@@ -76,7 +76,7 @@ window.TRIP = {
       links: [{ t: "2026 聖誕市集", u: "https://www.sapporo.travel/white-illumination/event/munich/" }] },
     tvtower: { name: "札幌電視塔", zh: "Sapporo TV Tower", kind: "spot", img: "tvtower", map: "さっぽろテレビ塔" },
     kplace: { name: "焼肉 徳寿 K-place", zh: "燒肉", kind: "food", img: "yakiniku", sample: true,
-      when: "12/18（五）18:30", status: "尚未訂位", statusTone: "warn", note: "JR 札幌站附近「カメイ札幌駅前ビル10F」，預計 3 位大人。",
+      when: "12/18（五）18:30", status: "一個月前開放訂位", statusTone: "blue", note: "JR 札幌站附近「カメイ札幌駅前ビル10F」，預計 3 位大人。訂位在用餐日一個月前才開放，12/18 的位子預計 11/18 左右可以訂。",
       map: "焼肉 徳寿 K-place", links: [{ t: "官方線上訂位", u: "https://yoyaku.toreta.in/k-place/" }, { t: "官網", u: "https://www.tokuju.com/shop/k-place/" }] },
     pal: { name: "Parfaiteria PaL", zh: "札幌夜芭菲", kind: "food", img: "parfait", sample: true,
       when: "12/18（五）20:30", status: "不接受訂位", statusTone: "calm", note: "薄野、南4条西2丁目；18:00 開門；現場排隊，可能候位。",
@@ -301,7 +301,7 @@ window.TRIP = {
         { t: "14:20", t2: "15:20", title: "nana's green tea 札幌PARCO店（5F）", note: "抹茶拿鐵、抹茶聖代或甜點，店家以當季菜單為準", type: "food", place: "nanas" },
         { t: "15:20", t2: "17:30", title: "大通商圈、聖誕市集／白色燈樹節、札幌電視塔", note: "市集 2026/11/20–12/25，11:00–21:00；入夜拍燈飾", type: "spot", place: "xmas" },
         { t: "17:30", t2: "18:20", title: "地鐵到札幌站", note: "前往 K-place，留候位時間", type: "move" },
-        { t: "18:30", t2: "20:00", title: "焼肉 徳寿 K-place", note: "預計 3 位大人，未訂位。JR 札幌站附近「カメイ札幌駅前ビル10F」，官方線上訂位", type: "food", place: "kplace", flag: "c-reserve" },
+        { t: "18:30", t2: "20:00", title: "焼肉 徳寿 K-place", note: "預計 3 位大人，尚未訂位：一個月前才開放，預計 11/18 左右可訂。JR 札幌站附近「カメイ札幌駅前ビル10F」，官方線上訂位", type: "food", place: "kplace", flag: "c-reserve" },
         { t: "20:30", t2: "21:30", title: "Parfaiteria PaL 札幌夜芭菲", note: "薄野、南4条西2丁目；18:00 開門；不接受一般訂位，現場排隊，可能候位", type: "food", place: "pal" },
         { t: "21:30", t2: "後", title: "回狸小路飯店", note: "自由休息", type: "stay" }
       ],
@@ -473,7 +473,7 @@ window.TRIP = {
     { id: "suica", text: "西瓜卡" },
     { id: "daikokuya", done: true, text: "確認 12/17 19:30 大黑屋札幌2號店訂位", link: "https://yoyaku.toreta.in/daikokuya-sapporo2go", linkText: "官方預約頁" },
     { id: "sama", done: true, text: "確認 12/18 11:30 Soup Curry SAMA 大通店是否已訂位" },
-    { id: "kplace", text: "預約 12/18 18:30 德壽 K-place 燒肉，3 位（尚未訂）", link: "https://yoyaku.toreta.in/k-place/", linkText: "官方預約頁" },
+    { id: "kplace", text: "預約 12/18 18:30 德壽 K-place 燒肉，3 位（一個月前開放，預計 11/18 左右可訂）", link: "https://yoyaku.toreta.in/k-place/", linkText: "官方預約頁" },
     { id: "crab", done: true, text: "確認 12/21 場外市場帝王蟹店家（根室杉山水產 UME堂）", link: "https://maps.app.goo.gl/PvbUW3zJbGQ2npHG7", linkText: "地圖" },
     { id: "ma108", text: "核對 12/20 頭大佛公車真 108 冬季班表、藻岩山纜車天候", link: "https://transfer.navitime.biz/chuo-bus/pc/map/Top", linkText: "中央巴士查詢" },
     { id: "nobori-delivery-prep", text: "12/22 已選尼克斯直送第一滝本館：準備住宿確認資料、另裝隨身物品與下午用品", link: "https://nixe-aqua.com/guide/", linkText: "配送／寄存資訊" },
@@ -487,8 +487,8 @@ window.TRIP = {
      level: conflict（資訊矛盾）/ tight（時間偏緊）/ pending（待確認・待補）
      ---------------------------------------------------------------------- */
   confirms: [
-    { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 尚未訂位",
-      body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。剩下 12/18 18:30 德壽 K-place（3 位）在 Notion 寫「尚未訂」。", day: 2 },
+    { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 等開放訂位",
+      body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。德壽 K-place 要在用餐日一個月前才開放訂位，12/18 18:30（3 位）的位子預計 11/18 左右可以訂，開放後盡快預約。", day: 2 },
     { id: "c-dinner", level: "pending", title: "晚餐待訂：12/19、12/21" }
   ],
 
