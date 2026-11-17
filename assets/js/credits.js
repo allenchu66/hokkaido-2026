@@ -244,5 +244,12 @@ window.PHOTO_CREDITS = {
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Dai-ichi_Takimotokan.jpg",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+ },
+ "ikura": {
+  "title": "Ikura don.jpg",
+  "author": "Flickr.com user \"Blue Lotus\"",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ikura_don.jpg",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
  }
 };

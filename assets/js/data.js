@@ -121,10 +121,10 @@ window.TRIP = {
     shiroi: { name: "白色戀人公園", zh: "Shiroi Koibito Park", kind: "spot", img: "shiroi", when: "12/21（一）14:20–17:10",
       note: "付費區最晚入場 16:30；白色戀人霜淇淋。2026 聖誕燈飾官方點燈 16:00–19:00。", map: "白い恋人パーク",
       links: [{ t: "2026 點燈資訊", u: "https://www.shiroikoibitopark.jp/illumination/" }] },
-    kaiyoutei: { name: "函館 開陽亭 すすきの総本店", zh: "薄野・北海道料理居酒屋", kind: "food",
+    hachikyo: { name: "海味 はちきょう 本店", zh: "海鮮居酒屋・鮭魚卵飯「つっこ飯」", kind: "food", img: "ikura", sample: true,
       when: "12/21（一）19:00–20:30（暫排）", status: "尚未訂位", statusTone: "warn", flag: "c-dinner",
-      note: "南4条西5丁目1-1，東急 REI 飯店 B1F／レストランプラザ札幌；薄野站 4 號出口步行約 3 分鐘。17:00–23:00（餐點最後點餐 22:00），無固定公休。3 位大人可線上訂位；有海鮮、烤魚及北海道肉類、蔬菜料理，建議依食量單點。活魷魚依當日漁獲供應，不保證有貨；目前僅排入行程，尚未確認空位。",
-      map: "函館 開陽亭 すすきの総本店 南4条西5丁目1-1", links: [{ t: "官方店舖資訊", u: "https://kaiyoutei.co.jp/店舗一覧/開陽亭-レストランプラザ3号店/" }, { t: "官方線上訂位", u: "https://booking.ebica.jp/webrsv/search/e014223901/35927?isfixshop=true" }, { t: "官方菜單", u: "https://kaiyoutei.co.jp/天然海鮮料理/各店共通グランメニュー/" }] },
+      note: "南3条西3丁目 1F，すすきの站步行約 1 分鐘，就在狸小路 3 丁目旁。Tabelog 3.67、居酒屋百名店 2025，全席禁菸。週一至週六 18:00–24:00（最後點餐 23:00），年末年始公休。可線上或電話訂位（050-5456-1219），超過預約時間 15 分鐘未到會被取消。",
+      map: "海味はちきょう 本店 札幌市中央区南3条西3丁目", links: [{ t: "Tabelog（訂位）", u: "https://tabelog.com/hokkaido/A0101/A010103/1003784/" }] },
 
     nixe: { name: "登別尼克斯海洋公園", zh: "Noboribetsu Marine Park Nixe", kind: "spot", img: "nixe", note: "JR 登別站步行約 5 分鐘。12/22 入園時辦理行李直送第一滝本館，每件 ¥1,200；園區寄存每件 ¥500 作備案。",
       map: "登別マリンパークニクス", links: [{ t: "官方冬季表演時刻", u: "https://nixe-aqua.com/attractions/winter/" }, { t: "官方行李配送／寄存資訊", u: "https://nixe-aqua.com/guide/" }] },
@@ -352,9 +352,9 @@ window.TRIP = {
     {
       n: 5, date: "2026-12-21", md: "12.21", dow: "MON", dowZh: "一",
       title: "場外市場＋札幌西區", sub: "帝王蟹・Tokuichi 拉麵・北海道神宮・白色戀人公園",
-      focus: "帝王蟹、Tokuichi 拉麵、北海道神宮與神宮茶屋、白色戀人公園、開陽亭居酒屋、藥妝採購",
+      focus: "帝王蟹、Tokuichi 拉麵、北海道神宮與神宮茶屋、白色戀人公園、はちきょう海鮮居酒屋、藥妝採購",
       cover: "jingu",
-      spots: ["jogai", "crab", "tokuichi", "jingu", "jinguchaya", "shiroi", "kaiyoutei"],
+      spots: ["jogai", "crab", "tokuichi", "jingu", "jinguchaya", "shiroi", "hachikyo"],
       timeline: [
         { t: "08:20", title: "飯店出發", note: "大通搭東西線到二十四軒站，步行到場外市場", type: "move" },
         { t: "09:00", t2: "10:15", title: "札幌場外市場：帝王蟹海鮮早午餐", note: "根室杉山水產 UME堂；先問蟹種、重量、總價", type: "food", place: "crab" },
@@ -368,7 +368,7 @@ window.TRIP = {
         { t: "16:00", t2: "17:10", title: "白色戀人公園 2026 聖誕燈飾", note: "官方點燈 16:00–19:00；先日景後夜景", type: "spot" },
         { t: "17:10", t2: "18:00", title: "宮之澤 → 大通", note: "東西線回市中心，先買伴手禮再吃晚餐", type: "move" },
         { t: "18:00", t2: "19:00", title: "伴手禮採購、前往晚餐", note: "大通百貨地下街或狸小路，買六花亭、ROYCE'、札幌農學校餅乾等。需要時先回飯店放重物，預留步行到薄野的時間；藥妝留飯後", type: "shop" },
-        { t: "19:00", t2: "20:30", title: "晚餐：函館 開陽亭 すすきの総本店（暫排）", note: "3 位大人，尚未訂位、未確認空位。店在東急 REI 飯店 B1F，薄野站 4 號出口步行約 3 分鐘；依食量單點北海道料理，用餐後往狸小路回飯店", type: "food", place: "kaiyoutei", flag: "c-dinner" },
+        { t: "19:00", t2: "20:30", title: "晚餐：海味 はちきょう 本店（暫排）", note: "3 位大人，尚未訂位。從大通走 Pole Town 地下街到すすきの站一帶約 5 分鐘，店在南3条西3丁目；名物是鮭魚卵飯「つっこ飯」，全席禁菸。超過預約時間 15 分鐘會被取消", type: "food", place: "hachikyo", flag: "c-dinner" },
         { t: "20:30", t2: "後", title: "狸小路藥妝採購、回飯店", note: "依體力及各分店營業時間採購，伴手禮已優先安排在飯前", type: "shop", place: "tanuki" }
       ],
       notes: ["場外市場與 Tokuichi 都吃很飽，可把 Tokuichi 改為 09:15 提前排隊／吃拉麵，帝王蟹之後再吃，依排隊與個人食量彈性調整。",
@@ -489,7 +489,7 @@ window.TRIP = {
   confirms: [
     { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 等開放訂位",
       body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。德壽 K-place 要在用餐日一個月前才開放訂位，12/18 18:30（3 位）的位子預計 11/18 左右可以訂，開放後盡快預約。", day: 2 },
-    { id: "c-dinner", level: "pending", title: "晚餐待訂：12/19、12/21" }
+    { id: "c-dinner", level: "pending", title: "晚餐待訂：12/19 未定、12/21 はちきょう本店尚未訂位" }
   ],
 
   links: [
