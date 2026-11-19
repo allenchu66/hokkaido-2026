@@ -1,12 +1,5 @@
 /* 照片來源：Wikimedia Commons（自由授權）。圖片已縮小尺寸以利網頁載入。 */
 window.PHOTO_CREDITS = {
- "hero": {
-  "title": "小樽雪あかりの路2013（Otaru Snow Light Path 2013） - panoramio (4).jpg",
-  "author": "t-konno",
-  "license": "CC BY-SA 3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:%E5%B0%8F%E6%A8%BD%E9%9B%AA%E3%81%82%E3%81%8B%E3%82%8A%E3%81%AE%E8%B7%AF2013%EF%BC%88Otaru_Snow_Light_Path_2013%EF%BC%89_-_panoramio_(4).jpg",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
- },
  "otaru-canal": {
   "title": "Otaru Canal HDR2.jpg",
   "author": "Tan Wei Liang Byorn",
