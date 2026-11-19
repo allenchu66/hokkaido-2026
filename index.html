@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero.jpg?v=2">
-  <link rel="stylesheet" href="assets/css/style.css?v=11">
+  <link rel="stylesheet" href="assets/css/style.css?v=12">
 </head>
 <body>
   <a class="skip" href="#itinerary">跳到行程</a>
@@ -27,8 +27,8 @@
     <nav class="topnav" aria-label="主要選單">
       <a href="#itinerary">行程</a>
       <a href="#food">美食</a>
+      <a href="#weather">天氣</a>
       <a href="#checklist">清單</a>
-      <a href="#confirm" class="topnav-confirm">待確認<span class="badge" id="confirmCount"></span></a>
     </nav>
   </header>
 
@@ -69,10 +69,21 @@
       </div>
     </section>
 
+    <!-- 天氣 -->
+    <section class="section weather" id="weather">
+      <div class="wrap">
+        <p class="kicker"><span>03</span>WEATHER</p>
+        <h2 class="h2">天氣預報</h2>
+        <p class="lead" id="wxStatus"></p>
+        <ol class="wx-list" id="wxList"></ol>
+        <p class="wx-foot" id="wxFoot"></p>
+      </div>
+    </section>
+
     <!-- 每日行程 -->
     <section class="section itinerary" id="itinerary" aria-label="每日行程">
       <div class="wrap">
-        <p class="kicker"><span>03</span>ITINERARY</p>
+        <p class="kicker"><span>04</span>ITINERARY</p>
         <h2 class="h2">每日行程</h2>
       </div>
       <nav class="daybar" id="daybar" aria-label="切換日期"></nav>
@@ -82,7 +93,7 @@
     <!-- 美食 -->
     <section class="section food" id="food">
       <div class="wrap">
-        <p class="kicker"><span>04</span>FOOD NOTES</p>
+        <p class="kicker"><span>05</span>FOOD NOTES</p>
         <h2 class="h2">美食手帳</h2>
         <p class="lead">餐廳照片多為<strong>料理示意圖</strong>（非該店實拍），訂位狀態依 Notion 記錄。</p>
         <div class="food-grid" id="foodGrid"></div>
@@ -92,7 +103,7 @@
     <!-- 購物 -->
     <section class="section shopping" id="shopping">
       <div class="wrap">
-        <p class="kicker"><span>05</span>SHOPPING</p>
+        <p class="kicker"><span>06</span>SHOPPING</p>
         <h2 class="h2">購物・藥妝・伴手禮</h2>
         <ul class="shop-list" id="shopList"></ul>
       </div>
@@ -101,21 +112,11 @@
     <!-- 出發前清單 -->
     <section class="section checklist" id="checklist">
       <div class="wrap narrow">
-        <p class="kicker"><span>06</span>BEFORE YOU GO</p>
+        <p class="kicker"><span>07</span>BEFORE YOU GO</p>
         <h2 class="h2">出發前需完成事項</h2>
         <p class="lead">勾選會記在這支手機／這台電腦的瀏覽器裡，換裝置不會同步。</p>
         <div class="progress" id="checkProgress"></div>
         <ul class="check-list" id="checkList"></ul>
-      </div>
-    </section>
-
-    <!-- 待確認 -->
-    <section class="section confirm" id="confirm">
-      <div class="wrap narrow">
-        <p class="kicker"><span>07</span>PLEASE CHECK</p>
-        <h2 class="h2">需要你確認的地方</h2>
-        <p class="lead">以下是整理 Notion 時發現的矛盾或缺漏。網站<strong>沒有</strong>擅自更改行程，只先標記出來。</p>
-        <ol class="confirm-list" id="confirmList"></ol>
       </div>
     </section>
 
@@ -143,8 +144,8 @@
 
   <noscript><p class="noscript">這個網站需要開啟 JavaScript 才能顯示行程。</p></noscript>
 
-  <script src="assets/js/data.js?v=15"></script>
+  <script src="assets/js/data.js?v=16"></script>
   <script src="assets/js/credits.js?v=9"></script>
-  <script src="assets/js/app.js?v=16"></script>
+  <script src="assets/js/app.js?v=17"></script>
 </body>
 </html>

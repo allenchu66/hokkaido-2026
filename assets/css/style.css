@@ -112,12 +112,6 @@ strong { font-weight: 500; color: var(--espresso); }
   .brand-text em { display: none; }
   .topnav a { padding: 6px 7px; font-size: 13.5px; letter-spacing: .04em; }
 }
-.badge {
-  display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; margin-left: 4px;
-  border-radius: 999px; font-size: 11px; letter-spacing: 0; line-height: 1;
-  background: var(--warn); color: #FBF7F0; vertical-align: 1px;
-}
-
 /* ---------- 主視覺 ---------- */
 .hero {
   position: relative;
@@ -504,20 +498,28 @@ figure { margin: 0; }
 .check-text { font-size: 15px; color: var(--espresso); line-height: 1.65; }
 .check-item input:checked ~ .check-text { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--latte); }
 .check-text .text-link { margin-left: 8px; font-size: 12.5px; }
+.check-item { scroll-margin-top: calc(var(--nav-h) + 20px); }
+.check-item:target { background: var(--blue-soft); border-radius: var(--radius-sm); }
 
-/* ---------- 待確認 ---------- */
-.confirm { background: linear-gradient(180deg, var(--bg), var(--paper) 60%); }
-.confirm-list { display: grid; gap: 14px; counter-reset: cf; }
-.cf {
-  position: relative; padding: 18px 18px 16px 18px; background: #FFFDF9;
-  border: 1px solid var(--line); border-radius: var(--radius); scroll-margin-top: calc(var(--nav-h) + 20px);
+/* ---------- 天氣 ---------- */
+.wx-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.wx-item {
+  display: grid; grid-template-columns: 76px 1fr auto; grid-template-areas: "date place temp" "date desc temp" "date meta meta";
+  column-gap: 14px; row-gap: 2px; align-items: baseline; padding: 14px 4px; border-bottom: 1px solid var(--line);
 }
-.cf:target { box-shadow: 0 0 0 3px var(--warn-soft); border-color: rgba(165, 105, 79, .4); }
-.cf-top { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
-.cf-n { font-family: var(--f-en); font-style: italic; font-size: 18px; color: var(--latte); }
-.cf h3 { font-family: var(--f-serif); font-size: 16.5px; letter-spacing: .04em; color: var(--espresso); line-height: 1.5; }
-.cf p { font-size: 14px; color: var(--ink); line-height: 1.85; }
-.cf .text-link { display: inline-block; margin-top: 8px; }
+.wx-item.is-today { background: var(--paper); border-radius: var(--radius-sm); }
+.wx-date { grid-area: date; display: flex; flex-direction: column; line-height: 1.2; }
+.wx-date span { font-family: var(--f-en); font-size: 22px; color: var(--espresso); letter-spacing: .02em; }
+.wx-date small { font-size: 12px; color: var(--muted); letter-spacing: .06em; margin-top: 2px; }
+.wx-place { grid-area: place; font-family: var(--f-serif); font-size: 15.5px; color: var(--espresso); letter-spacing: .06em; }
+.wx-desc { grid-area: desc; font-size: 14px; color: var(--mocha); }
+.wx-desc--normal { color: var(--muted); }
+.wx-temp { grid-area: temp; align-self: center; font-family: var(--f-en); font-size: 17px; color: var(--muted); white-space: nowrap; }
+.wx-temp b { font-weight: 500; font-size: 22px; color: var(--espresso); }
+.wx-meta { grid-area: meta; font-size: 12.5px; color: var(--muted); }
+.wx-meta:empty { display: none; }
+.wx-item.is-normal .wx-temp b { color: var(--mocha); }
+.wx-foot { margin-top: 16px; display: grid; gap: 8px; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
 
 /* ---------- 連結 ---------- */
 .link-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
@@ -572,6 +574,13 @@ figure { margin: 0; }
   .hero-inner { padding-bottom: 88px; }
   .hero-zh { font-size: 19px; }
   .ov-list { grid-template-columns: repeat(4, 1fr); }
+  .wx-list { grid-template-columns: repeat(7, 1fr); gap: 10px; border-top: 0; }
+  .wx-item {
+    grid-template-columns: 1fr; grid-template-areas: "date" "place" "desc" "temp" "meta";
+    row-gap: 4px; padding: 16px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #FFFDF9;
+  }
+  .wx-item.is-today { border-color: var(--latte); background: var(--paper); }
+  .wx-temp { align-self: start; margin-top: 4px; }
   .ov-item a { grid-template-columns: 1fr; padding: 0; overflow: hidden; align-items: stretch; }
   .ov-thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 0; }
   .ov-text { padding: 12px 16px 16px; }

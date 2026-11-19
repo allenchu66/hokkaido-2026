@@ -18,19 +18,15 @@
   function mapUrl(q) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
   function ext(u, t) { return '<a class="text-link" href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(t) + "</a>"; }
 
-  var confirmIndex = {};
-  T.confirms.forEach(function (c, i) { confirmIndex[c.id] = { c: c, n: i + 1 }; });
-
-  var LEVEL = {
-    conflict: { label: "資訊矛盾", cls: "" },
-    tight: { label: "時間偏緊", cls: " flag--tight" },
-    pending: { label: "待確認", cls: " flag--pending" }
-  };
+  /* 行程上的「出發前待辦」標記：對應 checklist 的 id，已勾選完成就不顯示 */
+  var checkIndex = {};
+  T.checklist.forEach(function (c) { checkIndex[c.id] = c; });
   function flag(id) {
-    var f = confirmIndex[id];
-    if (!f) return "";
-    var lv = LEVEL[f.c.level] || LEVEL.pending;
-    return '<a class="flag' + lv.cls + '" href="#cf-' + esc(id) + '">' + lv.label + "・第 " + f.n + " 項</a>";
+    var c = checkIndex[id];
+    if (!c) return "";
+    var state = loadChecks();
+    if (id in state ? state[id] : c.done) return "";
+    return '<a class="flag flag--pending" href="#ck-' + esc(id) + '">出發前待辦</a>';
   }
   function chip(text, tone) {
     if (!text) return "";
@@ -295,7 +291,7 @@
     var state = loadChecks();
     var tick = '<svg viewBox="0 0 14 14" fill="none" stroke="#FAF6EF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg>';
     $("#checkList").innerHTML = T.checklist.map(function (c) {
-      return '<li class="check-item"><label>' +
+      return '<li class="check-item" id="ck-' + esc(c.id) + '"><label>' +
         '<input type="checkbox" data-id="' + esc(c.id) + '"' + ((c.id in state ? state[c.id] : c.done) ? " checked" : "") + ">" +
         '<span class="check-box">' + tick + "</span>" +
         '<span class="check-text">' + esc(c.text) + (c.link ? ext(c.link, c.linkText || "連結") : "") + "</span>" +
@@ -320,19 +316,85 @@
     progress();
   }
 
-  /* ---------- 待確認 ---------- */
-  function renderConfirms() {
-    $("#confirmCount").textContent = T.confirms.length;
-    $("#confirmList").innerHTML = T.confirms.map(function (c, i) {
-      var lv = LEVEL[c.level] || LEVEL.pending;
-      var tone = c.level === "conflict" ? "warn" : c.level === "tight" ? "calm" : "blue";
-      return '<li class="cf reveal" id="cf-' + esc(c.id) + '">' +
-        '<div class="cf-top"><span class="cf-n">' + (i + 1 < 10 ? "0" : "") + (i + 1) + "</span>" + chip(lv.label, tone) + "</div>" +
-        "<h3>" + esc(c.title) + "</h3>" +
-        (c.body ? "<p>" + esc(c.body) + "</p>" : "") +
-        (c.day ? '<a class="text-link" href="#day-' + c.day + '">看 Day ' + c.day + " 行程</a>" : "") +
-        "</li>";
-    }).join("");
+  /* ---------- 天氣 ---------- */
+  var WMO = {
+    0: "晴", 1: "大致晴", 2: "晴時多雲", 3: "陰", 45: "霧", 48: "霧淞",
+    51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨", 56: "凍毛毛雨", 57: "凍毛毛雨",
+    61: "小雨", 63: "雨", 65: "大雨", 66: "凍雨", 67: "凍雨",
+    71: "小雪", 73: "雪", 75: "大雪", 77: "細雪",
+    80: "陣雨", 81: "陣雨", 82: "強陣雨", 85: "陣雪", 86: "強陣雪",
+    95: "雷雨", 96: "雷雨夾冰雹", 99: "雷雨夾冰雹"
+  };
+  function deg(v, digits) { return (digits ? v.toFixed(digits) : String(Math.round(v))).replace("-", "−") + "°"; }
+  function shiftDate(iso, n) {
+    var p = iso.split("-").map(Number);
+    var d = new Date(Date.UTC(p[0], p[1] - 1, p[2] + n));
+    return (d.getUTCMonth() + 1) + "/" + d.getUTCDate();
+  }
+
+  function renderWeather() {
+    var W = T.weather;
+    if (!W || !$("#wxList")) return;
+    var keys = Object.keys(W.places);
+    var first = T.days[0].date, last = T.days[T.days.length - 1].date;
+    var FORECAST_DAYS = 16;
+
+    function draw(fc) {
+      $("#wxList").innerHTML = T.days.map(function (d) {
+        var key = W.days[d.n], pl = W.places[key];
+        var f = fc && fc[key] && fc[key][d.date];
+        var body;
+        if (f) {
+          var meta = [];
+          if (f.pop != null) meta.push("降水 " + f.pop + "%");
+          if (f.snow >= 0.5) meta.push("降雪 " + Math.round(f.snow) + " cm");
+          if (f.sunset) meta.push("日落 " + f.sunset.slice(11, 16));
+          body = '<p class="wx-desc">' + esc(WMO[f.code] || "—") + "</p>" +
+            '<p class="wx-temp"><b>' + deg(f.hi) + "</b> / " + deg(f.lo) + "</p>" +
+            '<p class="wx-meta">' + esc(meta.join("・")) + "</p>";
+        } else {
+          body = '<p class="wx-desc wx-desc--normal">平年值</p>' +
+            '<p class="wx-temp"><b>' + deg(pl.hi, 1) + "</b> / " + deg(pl.lo, 1) + "</p>" +
+            '<p class="wx-meta">' + (fc ? "預報還沒到這天" : "12 月平均") + "</p>";
+        }
+        return '<li class="wx-item' + (d.date === today ? " is-today" : "") + (f ? "" : " is-normal") + '">' +
+          '<p class="wx-date"><span>' + esc(d.md) + "</span><small>" + esc(d.dowZh) + "・Day " + d.n + "</small></p>" +
+          '<p class="wx-place">' + esc(pl.name) + "</p>" + body + "</li>";
+      }).join("");
+    }
+
+    var links = keys.map(function (k) { return ext(W.places[k].link, W.places[k].name + " 2 週預報"); }).join("");
+    $("#wxFoot").innerHTML = '<span class="tl-links">' + links + "</span>" +
+      "<span>" + esc(W.normalNote) + ' 預報資料：<a class="text-link" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>（CC BY 4.0），以出發當天的官方預報為準。</span>';
+
+    var untilStart = dayDiff(today, first), untilEnd = dayDiff(today, last);
+    draw(null);
+    if (untilEnd < 0) { $("#wxStatus").textContent = "旅程已結束，以下為 12 月平年值。"; return; }
+    if (untilStart > FORECAST_DAYS - 1) {
+      $("#wxStatus").textContent = "預報只看得到約 16 天後，" + shiftDate(first, -(FORECAST_DAYS - 1)) + " 起會自動出現第一天的預報，" +
+        shiftDate(last, -(FORECAST_DAYS - 1)) + " 起七天都有。現在先看 12 月平年值。";
+      return;
+    }
+    $("#wxStatus").textContent = "讀取最新預報中…";
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=" + keys.map(function (k) { return W.places[k].lat; }).join(",") +
+      "&longitude=" + keys.map(function (k) { return W.places[k].lon; }).join(",") +
+      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,snowfall_sum,sunset" +
+      "&timezone=Asia%2FTokyo&forecast_days=" + FORECAST_DAYS;
+    fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (data) {
+      var list = Array.isArray(data) ? data : [data], fc = {};
+      list.forEach(function (loc, i) {
+        var dd = loc.daily, byDate = {};
+        dd.time.forEach(function (t, j) {
+          byDate[t] = { code: dd.weather_code[j], hi: dd.temperature_2m_max[j], lo: dd.temperature_2m_min[j],
+            pop: dd.precipitation_probability_max[j], snow: dd.snowfall_sum[j], sunset: dd.sunset[j] };
+        });
+        fc[keys[i]] = byDate;
+      });
+      draw(fc);
+      $("#wxStatus").textContent = "最新預報（" + today.slice(5).replace("-", "/") + " 更新）。越接近出發越準，山上（天狗山、藻岩山）會更冷、風更大。";
+    }).catch(function () {
+      $("#wxStatus").textContent = "預報暫時讀不到，先看平年值，或點下方 tenki.jp 連結。";
+    });
   }
 
   /* ---------- 連結與頁尾 ---------- */
@@ -396,11 +458,11 @@
   renderHero();
   renderFlights();
   renderOverview();
+  renderWeather();
   renderDays();
   renderFood();
   renderShopping();
   renderChecklist();
-  renderConfirms();
   renderLinks();
   interactions();
 
