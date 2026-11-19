@@ -49,13 +49,6 @@ window.PHOTO_CREDITS = {
   "source": "https://commons.wikimedia.org/wiki/File:Winter_Night-_Sapporo_TV_Tower.JPG",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
  },
- "tanuki": {
-  "title": "Tanukikoji Shopping Arcade - Jul 21, 2023.jpg",
-  "author": "MIKI Yoshihito",
-  "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Tanukikoji_Shopping_Arcade_-_Jul_21,_2023.jpg",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
- },
  "sakaimachi": {
   "title": "Sakaimachi street Otaru Hokkaido09n.jpg",
   "author": "663highland",
@@ -167,13 +160,6 @@ window.PHOTO_CREDITS = {
   "license": "CC BY 2.5",
   "source": "https://commons.wikimedia.org/wiki/File:JR_Sapporo_Sta04n3200.jpg",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.5/"
- },
- "jingisukan": {
-  "title": "Jingisukan at Asahi Beer Community Hall.jpg",
-  "author": "mdid",
-  "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Jingisukan_at_Asahi_Beer_Community_Hall.jpg",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
  },
  "soupcurry": {
   "title": "スープカレー Soup Curry.jpg",
