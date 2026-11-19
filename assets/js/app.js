@@ -16,7 +16,10 @@
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
   function mapUrl(q) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
-  function ext(u, t) { return '<a class="text-link" href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(t) + "</a>"; }
+  function ext(u, t) {
+    var inPage = String(u).charAt(0) === "#";
+    return '<a class="text-link" href="' + esc(u) + '"' + (inPage ? "" : ' target="_blank" rel="noopener"') + ">" + esc(t) + "</a>";
+  }
 
   /* 行程上的「出發前待辦」標記：對應 checklist 的 id，已勾選完成就不顯示 */
   var checkIndex = {};
@@ -316,6 +319,23 @@
     progress();
   }
 
+  /* ---------- 退稅教學 ---------- */
+  function renderTaxFree() {
+    var X = T.taxfree;
+    if (!X || !$("#taxSteps")) return;
+    function li(t) { return "<li>" + esc(t) + "</li>"; }
+    $("#taxLead").textContent = X.lead;
+    $("#taxSteps").innerHTML = X.steps.map(function (st, i) {
+      return '<li class="tax-step reveal"><span class="tax-n">' + (i + 1) + "</span>" +
+        '<div class="tax-body"><p class="tax-when">' + esc(st.when) + "<span>" + esc(st.where) + "</span></p>" +
+        '<h3 class="tax-title">' + esc(st.title) + "</h3><ul>" + st.items.map(li).join("") + "</ul></div></li>";
+    }).join("");
+    $("#taxTrip").innerHTML = X.trip.map(li).join("");
+    $("#taxRules").innerHTML = X.rules.map(li).join("");
+    $("#taxLinks").innerHTML = '<span class="tl-links">' + X.links.map(function (l) { return ext(l.u, l.t); }).join("") + "</span>" +
+      "<span>" + esc(X.source) + "</span>";
+  }
+
   /* ---------- 天氣 ---------- */
   var WMO = {
     0: "晴", 1: "大致晴", 2: "晴時多雲", 3: "陰", 45: "霧", 48: "霧淞",
@@ -462,6 +482,7 @@
   renderDays();
   renderFood();
   renderShopping();
+  renderTaxFree();
   renderChecklist();
   renderLinks();
   interactions();

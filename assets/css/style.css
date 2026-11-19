@@ -478,6 +478,33 @@ figure { margin: 0; }
 .shop-what { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 .shop-item .flag { margin-top: 6px; justify-self: start; }
 
+/* ---------- 退稅教學 ---------- */
+.tax-steps { display: grid; gap: 14px; }
+.tax-step {
+  display: grid; grid-template-columns: 36px 1fr; gap: 14px; padding: 18px 18px 16px;
+  background: #FFFDF9; border: 1px solid var(--line); border-radius: var(--radius);
+}
+.tax-n {
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--mocha); color: #FAF6EF; font-family: var(--f-en); font-size: 19px; font-weight: 500;
+}
+.tax-when { font-size: 12.5px; letter-spacing: .14em; color: var(--mocha); display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+.tax-when span { letter-spacing: .04em; color: var(--muted); }
+.tax-title { font-family: var(--f-serif); font-size: 17px; font-weight: 500; color: var(--espresso); letter-spacing: .03em; line-height: 1.5; margin: 4px 0 8px; }
+.tax-step ul, .tax-rules { display: grid; gap: 6px; }
+.tax-step li, .tax-rules li, .tax-trip li { position: relative; padding-left: 16px; font-size: 14.5px; line-height: 1.75; color: var(--ink); }
+.tax-step li::before, .tax-rules li::before, .tax-trip li::before {
+  content: ""; position: absolute; left: 2px; top: .8em; width: 5px; height: 5px; border-radius: 50%; background: var(--latte);
+}
+.tax-trip { margin-top: 22px; padding: 20px 20px 16px; background: var(--blue-soft); border-color: rgba(93, 121, 144, .2); }
+.tax-trip-title { font-family: var(--f-serif); font-size: 16px; letter-spacing: .1em; color: var(--espresso); margin-bottom: 8px; }
+.tax-trip ul { display: grid; gap: 6px; }
+.tax-trip li { color: var(--espresso); }
+.tax-trip li::before { background: var(--blue-ink); }
+.tax-h3 { font-family: var(--f-serif); font-size: 16px; font-weight: 500; letter-spacing: .1em; color: var(--espresso); margin: 28px 0 10px; }
+.tax-rules li::before { background: var(--warn); }
+.tax-links { margin-top: 22px; display: grid; gap: 8px; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
 /* ---------- 清單 ---------- */
 .progress { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; font-size: 13px; color: var(--muted); }
 .progress-bar { flex: 1; height: 4px; border-radius: 4px; background: var(--oat); overflow: hidden; }

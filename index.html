@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero.jpg?v=2">
-  <link rel="stylesheet" href="assets/css/style.css?v=12">
+  <link rel="stylesheet" href="assets/css/style.css?v=13">
 </head>
 <body>
   <a class="skip" href="#itinerary">跳到行程</a>
@@ -109,10 +109,27 @@
       </div>
     </section>
 
+    <!-- 退稅教學 -->
+    <section class="section taxfree" id="taxfree">
+      <div class="wrap narrow">
+        <p class="kicker"><span>07</span>TAX FREE</p>
+        <h2 class="h2">退稅新制教學</h2>
+        <p class="lead" id="taxLead"></p>
+        <ol class="tax-steps" id="taxSteps"></ol>
+        <aside class="tax-trip card" aria-label="這趟的退稅做法">
+          <p class="tax-trip-title">這趟要這樣做</p>
+          <ul id="taxTrip"></ul>
+        </aside>
+        <h3 class="tax-h3">容易踩雷的地方</h3>
+        <ul class="tax-rules" id="taxRules"></ul>
+        <p class="tax-links" id="taxLinks"></p>
+      </div>
+    </section>
+
     <!-- 出發前清單 -->
     <section class="section checklist" id="checklist">
       <div class="wrap narrow">
-        <p class="kicker"><span>07</span>BEFORE YOU GO</p>
+        <p class="kicker"><span>08</span>BEFORE YOU GO</p>
         <h2 class="h2">出發前需完成事項</h2>
         <p class="lead">勾選會記在這支手機／這台電腦的瀏覽器裡，換裝置不會同步。</p>
         <div class="progress" id="checkProgress"></div>
@@ -123,7 +140,7 @@
     <!-- 官方連結 -->
     <section class="section links" id="links">
       <div class="wrap narrow">
-        <p class="kicker"><span>08</span>LINKS</p>
+        <p class="kicker"><span>09</span>LINKS</p>
         <h2 class="h2">重要官方連結</h2>
         <ul class="link-list" id="linkList"></ul>
       </div>
@@ -144,8 +161,8 @@
 
   <noscript><p class="noscript">這個網站需要開啟 JavaScript 才能顯示行程。</p></noscript>
 
-  <script src="assets/js/data.js?v=16"></script>
+  <script src="assets/js/data.js?v=17"></script>
   <script src="assets/js/credits.js?v=9"></script>
-  <script src="assets/js/app.js?v=17"></script>
+  <script src="assets/js/app.js?v=18"></script>
 </body>
 </html>
