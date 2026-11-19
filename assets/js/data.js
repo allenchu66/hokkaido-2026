@@ -321,12 +321,17 @@ window.TRIP = {
       title: "抵達札幌", sub: "UNIQLO・草莓大福・成吉思汗・狸小路購物",
       focus: "入住、UNIQLO 買保暖衣、ぽたぽたいちご 草莓大福、19:30 大黑屋、飯後公仔與扭蛋自由逛",
       cover: "tanuki",
+      route: [
+        { at: "cts", area: "新千歲機場" }, { at: "station", by: "train", pass: true, area: "札幌市區" }, { at: "granbell", by: "subway" },
+        { at: "uniqlo", by: "walk" }, { at: "potapota", by: "walk" }, { at: "daikokuya", by: "walk" }, { at: "surugaya", by: "walk" },
+        { at: "cpla", by: "walk" }, { at: "taito", by: "walk" }, { at: "granbell", by: "walk" }
+      ],
       spots: ["station", "granbell", "potapota", "daikokuya", "tanuki", "surugaya", "cpla", "taito", "donki", "mybasket"],
       timeline: [
         { t: "08:30", title: "台中機場集合", note: "原行程", type: "move" },
         { t: "10:20", t2: "15:00", title: "台中 → 新千歲機場（JX318）", note: "原航班時間，仍以機票為準", type: "move" },
         { t: "15:00", t2: "16:30", title: "入境、領行李", note: "不排緊湊", type: "move" },
-        { t: "16:30", t2: "17:30", title: "JR 快速 Airport 至札幌站，地鐵或步行至狸小路", note: "原先記錄 JR 自由席參考 ¥1,200，請以實際票價為準", type: "move", place: "station" },
+        { t: "16:30", t2: "17:30", title: "JR 快速 Airport 至札幌站，轉地鐵到すすきの", note: "JR 約 40 分到札幌站，轉地鐵南北線（往真駒內）2 站到すすきの，2 號出口步行約 8 分到飯店（狸小路 7 丁目旁）。札幌站走到飯店約 1.5 公里，拖行李走雪地太累；3 人也可以在札幌站搭計程車，約 10 分鐘。JR 自由席參考 ¥1,200，以實際票價為準", type: "move", place: "station" },
         { t: "17:30", t2: "18:10", title: "GRANBELL HOTEL TANUKI, SAPPORO Check-in", note: "先放行李、休息", type: "stay", place: "granbell" },
         { t: "18:10", t2: "19:00", title: "UNIQLO 札幌三越店（本館 10 樓）", note: "大通地區，通常至 20:00；先買 HEATTECH／手套／襪子。若入境延遲，可改在 12/18 去", type: "shop", map: "ユニクロ 札幌三越店" },
         { t: "19:00", t2: "19:15", title: "ぽたぽたいちご 本店：草莓大福", note: "從三越步行至 moyuk SAPPORO 的 OMOTASE-HONPO，買草莓大福；官網營業至 21:00。含移動與購買，若排隊較久就留到小樽店", type: "food", place: "potapota" },
@@ -344,6 +349,11 @@ window.TRIP = {
       title: "札幌北區＋市中心", sub: "諏訪神社・紅磚・SAMA・北大・燒肉・夜芭菲",
       focus: "諏訪神社、紅磚廳舍與時計台、11:30 SAMA、北海道大學、抹茶咖啡、吉卜力與三宅一生購物、18:15 德壽燒肉（已訂位）、夜芭菲",
       cover: "akarenga",
+      route: [
+        { at: "granbell" }, { at: "suwa", by: "subway" }, { at: "akarenga", by: "subway" }, { at: "clock", by: "walk" }, { at: "sama", by: "walk" },
+        { at: "hokudai", by: "subway" }, { at: "parco", by: "subway" }, { at: "mitsukoshiIssey", by: "walk" }, { at: "xmas", by: "walk" },
+        { at: "kplace", by: "subway" }, { at: "pal", by: "subway" }, { at: "granbell", by: "walk" }
+      ],
       spots: ["suwa", "akarenga", "clock", "sama", "hokudai", "nanas", "parcoCharacters", "baobaoParco", "mitsukoshiIssey", "daimaruIssey", "xmas", "tvtower", "kplace", "pal"],
       timeline: [
         { t: "08:40", title: "飯店出發", note: "走到東豐線車站（大通），往北13條東", type: "move" },
@@ -372,6 +382,12 @@ window.TRIP = {
       title: "小樽一日遊", sub: "運河・堺町通・LeTAO・天狗山夕陽",
       focus: "11:30 CAFE' BAAL、運河、堺町通、LeTAO、天狗山夕陽及運河夜景",
       cover: "otaru-canal",
+      route: [
+        { at: "granbell", area: "札幌" }, { at: "station", by: "subway", pass: true }, { at: "takinami", by: "train", area: "小樽" }, { at: "baal", by: "walk" },
+        { at: "otaruCanal", by: "walk" }, { at: "sakaimachi", by: "walk" }, { at: "letao", by: "walk" }, { at: "musicbox", by: "walk" },
+        { at: "minamiOtaru", by: "walk", pass: true }, { at: "otaruSt", by: "train", pass: true }, { at: "tengu", by: "bus" }, { at: "otaruCanal", by: "bus" },
+        { at: "otaruSt", by: "walk", pass: true }, { at: "station", by: "train", pass: true }, { at: "granbell", by: "subway" }
+      ],
       spots: ["takinami", "baal", "otaruCanal", "sakaimachi", "musicbox", "letao", "potapotaOtaru", "tengu"],
       timeline: [
         { t: "09:30", title: "飯店出發", note: "薄野搭南北線到札幌，轉 JR 快速 Airport 或普通車到小樽", type: "move" },
@@ -392,6 +408,11 @@ window.TRIP = {
       title: "札幌南區", sub: "頭大佛・摩艾石像・藻岩山・根室花まる",
       focus: "頭大佛、摩艾石像、午餐奧芝商店湯咖哩、藻岩山（日落與夜景）、晚餐根室花まる迴轉壽司",
       cover: "moai",
+      route: [
+        { at: "granbell", area: "札幌市區" }, { at: "makomanai", by: "subway", pass: true }, { at: "moai", by: "bus", area: "滝野靈園" }, { at: "atama", by: "walk" },
+        { at: "makomanai", by: "bus", pass: true }, { at: "okushiba", by: "subway" }, { at: "moiwa", by: "tram" }, { at: "moiwaTop", by: "ropeway" },
+        { at: "hanamaru", by: "tram" }, { at: "tanuki", by: "walk" }, { at: "granbell", by: "walk" }
+      ],
       spots: ["moai", "atama", "okushiba", "moiwa", "hanamaru", "daiichi"],
       timeline: [
         { t: "08:55", title: "從狸小路飯店出發", note: "南北線從薄野到「真駒內」終點站", type: "move" },
@@ -416,6 +437,10 @@ window.TRIP = {
       title: "場外市場＋札幌西區", sub: "帝王蟹・Tokuichi 拉麵・北海道神宮・白色戀人公園",
       focus: "帝王蟹、Tokuichi 拉麵、北海道神宮與神宮茶屋、白色戀人公園、はちきょう海鮮居酒屋、藥妝採購",
       cover: "jingu",
+      route: [
+        { at: "granbell" }, { at: "crab", by: "subway" }, { at: "tokuichi", by: "walk" }, { at: "jingu", by: "subway" }, { at: "jinguchaya", by: "walk" },
+        { at: "shiroi", by: "subway" }, { at: "hachikyo", by: "subway" }, { at: "tanuki", by: "walk" }, { at: "granbell", by: "walk" }
+      ],
       spots: ["jogai", "crab", "tokuichi", "jingu", "jinguchaya", "shiroi", "hachikyo"],
       timeline: [
         { t: "08:20", title: "飯店出發", note: "大通搭東西線到二十四軒站，步行到場外市場", type: "move" },
@@ -441,9 +466,13 @@ window.TRIP = {
       title: "札幌 → 登別", sub: "尼克斯水族館・企鵝散步・地獄谷・溫泉",
       focus: "尼克斯交行李直送飯店、企鵝 11:00 首選／14:15 備案、地獄谷、溫泉",
       cover: "jigoku",
+      route: [
+        { at: "granbell", area: "札幌" }, { at: "station", by: "taxi", pass: true }, { at: "noboribetsuSt", by: "train", pass: true, area: "登別" }, { at: "nixe", by: "walk" },
+        { at: "noboribetsuSt", by: "walk", pass: true }, { at: "onsen", by: "bus" }, { at: "jigoku", by: "walk" }, { at: "noboriHotel", by: "walk" }
+      ],
       spots: ["nixe", "penguin", "jigoku", "onsen", "noboriHotel"],
       timeline: [
-        { t: "08:00", title: "札幌狸小路飯店退房，帶行李到札幌車站", note: "行李帶到尼克斯再辦理配送；護照、貴重品、電子設備、藥品及下午用品另裝隨身包", type: "stay" },
+        { t: "08:00", title: "札幌狸小路飯店退房，帶行李到札幌車站", note: "帶行李到札幌站：3 人搭計程車約 10 分鐘最省事，或走到すすきの站搭地鐵南北線 2 站。行李帶到尼克斯再辦理配送；護照、貴重品、電子設備、藥品及下午用品另裝隨身包", type: "stay" },
         { t: "08:43", t2: "09:54", title: "札幌 → JR 登別站", note: "原計畫 JR 特急參考班次，訂票時核對時刻", type: "move", place: "station" },
         { t: "09:54", t2: "10:20", title: "步行到尼克斯、辦理行李直送第一滝本館、入園", note: "JR 登別站步行約 5 分鐘；在入口館服務台（ゲート館インフォメーション）交件，每件 ¥1,200。現場核對收件飯店與送達安排，保留收據；若當日無法配送，改用園區寄存", type: "move", place: "nixe" },
         { t: "10:30", t2: "10:45", title: "海狗表演①", note: "如果順利入園可以看", type: "spot" },
@@ -500,6 +529,9 @@ window.TRIP = {
       title: "登別 → 新千歲 → 台灣", sub: "早餐泡湯・機場直達巴士・伴手禮",
       focus: "早餐泡湯、機場直達巴士、機場買伴手禮、返程",
       cover: "onsen",
+      route: [
+        { at: "noboriHotel", area: "登別溫泉" }, { at: "onsen", by: "walk" }, { at: "cts", by: "bus", area: "新千歲機場" }
+      ],
       spots: ["noboriHotel", "onsen", "cts"],
       timeline: [
         { t: "07:30", t2: "09:30", title: "飯店早餐、泡溫泉、整理行李", note: "第一滝本館。若昨天沒去地獄谷且天氣好，可在不趕車前提下散步", type: "stay", place: "noboriHotel" },
@@ -579,6 +611,64 @@ window.TRIP = {
     { t: "第一滝本館入住與行李寄存資訊", u: "https://takimotokan.co.jp/en/faq/" },
     { t: "登別溫泉 → 新千歲機場 巴士時刻／預約", u: "https://www.donanbus.co.jp/map/noboribetsu_airport/" }
   ],
+
+  /* ----------------------------------------------------------------------
+     每日路線地圖：route 的 at 對應這裡的點；by 是「從上一站怎麼過來」
+     by：walk 步行／subway 地鐵／train JR／tram 市電／bus 巴士／ropeway 纜車／taxi 計程車
+     pass: true 只畫小圓點（轉乘車站），不編號
+     ll 是 [緯度, 經度]；label 是地圖上的短名稱；不在 places 裡的點要另寫 name 與 kind
+     ---------------------------------------------------------------------- */
+  map: {
+    pts: {
+      cts: { ll: [42.788, 141.681], label: "新千歲機場" },
+      station: { ll: [43.06866, 141.35079], label: "札幌站" },
+      granbell: { ll: [43.05609, 141.34582], label: "飯店" },
+      uniqlo: { ll: [43.05957, 141.35306], label: "三越 UNIQLO", name: "札幌三越 UNIQLO（本館 10F）", kind: "shop", map: "ユニクロ 札幌三越店" },
+      potapota: { ll: [43.05763, 141.35353], label: "草莓大福" },
+      daikokuya: { ll: [43.0541, 141.351], label: "大黑屋" },
+      surugaya: { ll: [43.05608, 141.35098], label: "駿河屋" },
+      cpla: { ll: [43.05735, 141.35175], label: "C-pla 扭蛋" },
+      taito: { ll: [43.05748, 141.35262], label: "TAITO" },
+      suwa: { ll: [43.07605, 141.35392], label: "諏訪神社" },
+      akarenga: { ll: [43.06397, 141.34802], label: "紅磚廳舍" },
+      clock: { ll: [43.06255, 141.35364], label: "時計台" },
+      sama: { ll: [43.057, 141.3503], label: "SAMA 湯咖哩" },
+      hokudai: { ll: [43.06962, 141.34344], label: "北海道大學" },
+      parco: { ll: [43.05873, 141.35316], label: "PARCO", name: "札幌 PARCO（5F 抹茶・7F 吉卜力・1F BAO BAO）", kind: "shop", map: "札幌PARCO" },
+      mitsukoshiIssey: { ll: [43.0598, 141.3527], label: "三越 4F" },
+      xmas: { ll: [43.0607, 141.3547], label: "聖誕市集" },
+      kplace: { ll: [43.06616, 141.35363], label: "德壽燒肉" },
+      pal: { ll: [43.0551, 141.356], label: "夜芭菲" },
+      otaruSt: { ll: [43.1974, 140.9942], label: "小樽站", name: "JR 小樽站", kind: "spot", map: "小樽駅" },
+      minamiOtaru: { ll: [43.18708, 141.00764], label: "南小樽站", name: "JR 南小樽站", kind: "spot", map: "南小樽駅" },
+      takinami: { ll: [43.19854, 140.99387], label: "三角市場" },
+      baal: { ll: [43.19929, 140.99423], label: "BAAL 牛排飯" },
+      otaruCanal: { ll: [43.19784, 141.00328], label: "小樽運河" },
+      sakaimachi: { ll: [43.19435, 141.00607], label: "堺町通" },
+      letao: { ll: [43.19131, 141.00744], label: "LeTAO" },
+      musicbox: { ll: [43.19058, 141.00779], label: "音樂盒堂" },
+      tengu: { ll: [43.17794, 140.97516], label: "天狗山纜車" },
+      makomanai: { ll: [42.99117, 141.35843], label: "真駒內站", name: "地鐵真駒內站（轉真 108 巴士）", kind: "spot", map: "真駒内駅" },
+      moai: { ll: [42.9227, 141.3655], label: "摩艾石像" },
+      atama: { ll: [42.92054, 141.36274], label: "頭大佛" },
+      okushiba: { ll: [43.0589, 141.35], label: "奧芝商店" },
+      moiwa: { ll: [43.03161, 141.3331], label: "藻岩山纜車" },
+      moiwaTop: { ll: [43.02224, 141.32245], label: "藻岩山山頂", name: "藻岩山山頂展望台", kind: "spot", map: "藻岩山 山頂展望台" },
+      hanamaru: { ll: [43.05513, 141.35262], label: "根室花まる" },
+      tanuki: { ll: [43.05718, 141.35211], label: "狸小路" },
+      crab: { ll: [43.07059, 141.32033], label: "帝王蟹" },
+      tokuichi: { ll: [43.07047, 141.32021], label: "とくいち" },
+      jingu: { ll: [43.0548, 141.3083], label: "北海道神宮" },
+      jinguchaya: { ll: [43.056, 141.3092], label: "神宮茶屋" },
+      shiroi: { ll: [43.08869, 141.27168], label: "白色戀人公園" },
+      hachikyo: { ll: [43.0566, 141.3548], label: "はちきょう" },
+      noboribetsuSt: { ll: [42.45201, 141.1808], label: "登別站", name: "JR 登別站", kind: "spot", map: "登別駅" },
+      nixe: { ll: [42.45506, 141.18276], label: "尼克斯" },
+      onsen: { ll: [42.4928, 141.1462], label: "登別溫泉" },
+      jigoku: { ll: [42.49824, 141.14798], label: "地獄谷" },
+      noboriHotel: { ll: [42.49475, 141.14451], label: "第一滝本館" }
+    }
+  },
 
   /* ----------------------------------------------------------------------
      退稅教學：2026/11/1 起的「先付後退」（リファンド方式）

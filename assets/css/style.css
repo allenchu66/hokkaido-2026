@@ -344,6 +344,50 @@ figure { margin: 0; }
 
 /* 時間軸 */
 .tl-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+
+/* ---------- 每日路線地圖 ---------- */
+.route { margin-bottom: 30px; }
+.route-legend .rl { display: inline-block; width: 18px; height: 0; border-radius: 0; border-top: 3px var(--s, solid) var(--c); margin-right: 5px; vertical-align: 3px; background: none; }
+.route-views { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.route-views:empty { display: none; }
+.route-views button {
+  font: inherit; font-size: 12.5px; letter-spacing: .04em; color: var(--mocha); cursor: pointer;
+  padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line-strong); background: #FFFDF9;
+}
+.route-views button.is-active { background: var(--espresso); border-color: var(--espresso); color: var(--bg); }
+.route-map {
+  position: relative; z-index: 0; height: 290px; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: #EFE8DC; box-shadow: var(--shadow);
+}
+.route-map .leaflet-tile-pane { filter: sepia(.3) saturate(.72) brightness(1.04) contrast(.92); }
+.route-map .leaflet-control-attribution { font-size: 9.5px; background: rgba(255, 253, 249, .8); }
+.route-map .leaflet-control-zoom a { color: var(--mocha); }
+.route-loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; color: var(--muted); }
+.route--nomap .route-map, .route--nomap .route-views, .route--nomap .route-note { display: none; }
+.rm-pin {
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #FFFDF9; box-shadow: 0 2px 6px rgba(77, 60, 48, .35);
+  color: #FFFDF9; font-family: var(--f-en); font-size: 15px; font-weight: 600; line-height: 1;
+}
+.rm-k--spot { background: #5D7990; }
+.rm-k--food { background: #A5694F; }
+.rm-k--shop { background: #B07A8C; }
+.rm-k--stay { background: #7F654F; }
+.rm-pop { font-family: var(--f-sans); min-width: 140px; }
+.rm-pop-t { font-size: 14.5px; color: var(--espresso); font-weight: 500; }
+.rm-pop-n { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+.rm-pop a { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--blue-ink); }
+.route-map .leaflet-popup-content-wrapper { border-radius: 14px; box-shadow: var(--shadow); }
+.route-map .leaflet-popup-content { margin: 10px 14px; }
+.route-stops { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 12px; }
+.route-stops button {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  font: inherit; font-size: 13px; color: var(--espresso); letter-spacing: .02em;
+  padding: 3px 10px 3px 3px; border-radius: 999px; border: 1px solid var(--line); background: #FFFDF9;
+}
+.route-stops button:hover { border-color: var(--line-strong); }
+.route-stops .rm-k { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: #FFFDF9; font-family: var(--f-en); font-size: 13px; font-weight: 600; }
+.route-note { margin-top: 8px; font-size: 12px; color: var(--muted); }
 .tl-head h4 { font-family: var(--f-en); font-size: 14px; letter-spacing: .3em; color: var(--mocha); font-weight: 500; }
 .tl-legend { display: flex; gap: 12px; font-size: 11.5px; color: var(--muted); flex-wrap: wrap; justify-content: flex-end; }
 .tl-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
@@ -624,6 +668,7 @@ figure { margin: 0; }
   .day { padding: 88px 0 56px; }
   .day-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
   .day-side { position: sticky; top: calc(var(--nav-h) + 84px); }
+  .route-map { height: 340px; }
   .day-num b { font-size: 80px; }
   .rail {
     grid-auto-flow: row; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); grid-auto-columns: auto;

@@ -213,6 +213,207 @@
     return html + "</div>";
   }
 
+  /* ---------- 每日路線地圖（Leaflet＋OpenStreetMap，不需要金鑰） ---------- */
+  var MODE = {
+    train: { t: "JR", color: "#4E6E8A", weight: 5 },
+    subway: { t: "地鐵", color: "#7FA0BA", weight: 4 },
+    tram: { t: "市電", color: "#7FA0BA", weight: 4, dash: "9 6" },
+    bus: { t: "巴士", color: "#6F9A7A", weight: 4, dash: "11 7" },
+    ropeway: { t: "纜車", color: "#A5694F", weight: 3, dash: "3 6" },
+    taxi: { t: "計程車／地鐵", color: "#C9A24A", weight: 4, dash: "12 6" },
+    walk: { t: "步行", color: "#8A6A50", weight: 3.5, dash: "1 7" }
+  };
+  var KIND_EMOJI = { food: "🍴", shop: "🛍️", stay: "🏨", spot: "📷" };
+
+  function routePoint(id) {
+    var pt = (T.map && T.map.pts[id]) || {};
+    var pl = T.places[id] || {};
+    return {
+      id: id, ll: pt.ll, label: pt.label || pl.name || id, name: pt.name || pl.name || pt.label || id,
+      kind: pt.kind || pl.kind || "spot",
+      mapLink: pl.mapUrl || ((pt.map || pl.map) ? mapUrl(pt.map || pl.map) : (pt.ll ? mapUrl(pt.ll.join(",")) : ""))
+    };
+  }
+  /* 把 route 整理成：有編號的地點、轉乘小點、每一段路 */
+  function routeData(d) {
+    var stops = [], byId = {}, legs = [], n = 0, prev = null;
+    (d.route || []).forEach(function (r) {
+      var p = routePoint(r.at);
+      if (!p.ll) return;
+      var s = byId[r.at];
+      if (!s) {
+        s = byId[r.at] = { p: p, pass: !!r.pass, n: r.pass ? 0 : ++n, area: r.area || "" };
+        stops.push(s);
+      } else if (!r.pass && s.pass) {
+        s.pass = false; s.n = ++n;
+      }
+      if (r.area && !s.area) s.area = r.area;
+      if (prev && r.by) legs.push({ a: prev.p.ll, b: p.ll, by: r.by });
+      prev = s;
+    });
+    return { stops: stops, legs: legs };
+  }
+  function routeHtml(d) {
+    if (!d.route || !T.map) return "";
+    var R = routeData(d);
+    var used = {};
+    R.legs.forEach(function (l) { used[l.by] = true; });
+    var legend = Object.keys(MODE).filter(function (k) { return used[k]; }).map(function (k) {
+      return '<span><i class="rl" style="--c:' + MODE[k].color + (MODE[k].dash ? ";--s:dashed" : "") + (k === "walk" ? ";--s:dotted" : "") + '"></i>' + MODE[k].t + "</span>";
+    }).join("");
+    var list = R.stops.filter(function (s) { return !s.pass; }).map(function (s) {
+      return '<li><button type="button" data-stop="' + esc(s.p.id) + '"><b class="rm-k rm-k--' + esc(s.p.kind) + '">' + s.n + "</b>" + esc(s.p.label) + "</button></li>";
+    }).join("");
+    return '<section class="route reveal" data-day="' + d.n + '" aria-label="Day ' + d.n + ' 路線地圖">' +
+      '<div class="tl-head"><h4>ROUTE</h4><div class="tl-legend route-legend">' + legend + "</div></div>" +
+      '<div class="route-views"></div>' +
+      '<div class="route-map"><p class="route-loading">地圖載入中…</p></div>' +
+      '<ol class="route-stops">' + list + "</ol>" +
+      '<p class="route-note">線條是示意路線，不是實際行走路徑；點數字或地點名稱看詳細。</p>' +
+      "</section>";
+  }
+
+  function curvePts(a, b, bend) {
+    var k = Math.cos(a[0] * Math.PI / 180);
+    var ax = a[1] * k, ay = a[0], bx = b[1] * k, by = b[0];
+    var dx = bx - ax, dy = by - ay, len = Math.sqrt(dx * dx + dy * dy);
+    if (len < 0.0006) return [a, b];
+    var cx = (ax + bx) / 2 - dy * bend, cy = (ay + by) / 2 + dx * bend, out = [];
+    for (var i = 0; i <= 24; i++) {
+      var t = i / 24, u = 1 - t;
+      var x = u * u * ax + 2 * u * t * cx + t * t * bx, y = u * u * ay + 2 * u * t * cy + t * t * by;
+      out.push([y, x / k]);
+    }
+    return out;
+  }
+  function kmBetween(a, b) {
+    var k = Math.cos(a[0] * Math.PI / 180);
+    var dx = (a[1] - b[1]) * 111.32 * k, dy = (a[0] - b[0]) * 110.57;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function buildRouteMap(sec) {
+    var L = window.L, d = null;
+    T.days.forEach(function (x) { if (String(x.n) === sec.getAttribute("data-day")) d = x; });
+    if (!L || !d) return;
+    var R = routeData(d), el = sec.querySelector(".route-map");
+    el.innerHTML = "";
+    var touch = L.Browser.mobile || L.Browser.touch;
+    var map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, zoomSnap: 0.25 });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+    }).addTo(map);
+
+    R.legs.forEach(function (l, i) {
+      var m = MODE[l.by] || MODE.walk;
+      L.polyline(curvePts(l.a, l.b, i % 2 ? -0.16 : 0.16), {
+        color: m.color, weight: m.weight, opacity: 0.9, dashArray: m.dash || null, lineCap: "round", lineJoin: "round", interactive: false
+      }).addTo(map);
+    });
+
+    var markers = {};
+    R.stops.forEach(function (s) {
+      var p = s.p;
+      var pop = '<div class="rm-pop"><p class="rm-pop-t">' + (s.pass ? "🚉" : (KIND_EMOJI[p.kind] || "📍")) + " " + esc(p.label) + "</p>" +
+        (p.name !== p.label ? '<p class="rm-pop-n">' + esc(p.name) + "</p>" : "") +
+        (p.mapLink ? '<a href="' + esc(p.mapLink) + '" target="_blank" rel="noopener">Google 地圖</a>' : "") + "</div>";
+      var mk = s.pass
+        ? L.circleMarker(p.ll, { radius: 5, color: "#FFFDF9", weight: 2, fillColor: "#7F654F", fillOpacity: 1 })
+        : L.marker(p.ll, { icon: L.divIcon({ className: "", html: '<span class="rm-pin rm-k--' + esc(p.kind) + '">' + s.n + "</span>", iconSize: [26, 26], iconAnchor: [13, 13], popupAnchor: [0, -12] }), riseOnHover: true, keyboard: true, title: p.label });
+      mk.bindPopup(pop, { closeButton: false, offset: s.pass ? [0, -2] : [0, 0] }).addTo(map);
+      markers[p.id] = mk;
+    });
+
+    /* 依距離分區（相距 10 km 以上算不同區），可切換視角 */
+    var clusters = [];
+    R.stops.forEach(function (s) {
+      var c = null;
+      clusters.forEach(function (x) { if (!c && kmBetween(x.seed, s.p.ll) < 10) c = x; });
+      if (!c) { c = { seed: s.p.ll, pts: [], main: [], label: "", count: 0 }; clusters.push(c); }
+      c.pts.push(s.p.ll);
+      if (!s.pass) { c.count++; c.main.push(s.p.ll); }
+      if (!c.label && s.area) c.label = s.area;
+    });
+    clusters.forEach(function (c) {
+      if (!c.label) c.label = "區域";
+      c.fit = c.main.length >= 2 ? c.main : c.pts;
+    });
+    var all = [];
+    R.stops.forEach(function (s) { all.push(s.p.ll); });
+    var span = 0;
+    all.forEach(function (a) { all.forEach(function (b) { span = Math.max(span, kmBetween(a, b)); }); });
+    function fit(pts) { map.fitBounds(L.latLngBounds(pts), { padding: [28, 28], maxZoom: 17 }); }
+    var start = all, startIdx = -1;
+    if (span > 20) {
+      var big = clusters.slice().sort(function (x, y) { return y.count - x.count; })[0];
+      if (big && big.count >= 3) { start = big.fit; startIdx = clusters.indexOf(big); }
+    }
+    fit(start);
+
+    var views = sec.querySelector(".route-views");
+    if (clusters.length > 1) {
+      views.innerHTML = '<button type="button" data-v="-1">全部路線</button>' + clusters.map(function (c, i) {
+        return '<button type="button" data-v="' + i + '">' + esc(c.label) + "</button>";
+      }).join("");
+      var setActive = function (v) {
+        views.querySelectorAll("button").forEach(function (b) { b.classList.toggle("is-active", b.getAttribute("data-v") === String(v)); });
+      };
+      setActive(startIdx);
+      views.addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (!b) return;
+        var v = Number(b.getAttribute("data-v"));
+        fit(v < 0 ? all : clusters[v].fit);
+        setActive(v);
+      });
+    }
+
+    sec.querySelector(".route-stops").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-stop]");
+      if (!b) return;
+      var mk = markers[b.getAttribute("data-stop")];
+      if (!mk) return;
+      map.setView(mk.getLatLng(), Math.max(map.getZoom(), 15));
+      mk.openPopup();
+      views.querySelectorAll("button").forEach(function (x) { x.classList.remove("is-active"); });
+    });
+    if (touch) sec.classList.add("is-touch");
+    setTimeout(function () { map.invalidateSize(); }, 400);
+  }
+
+  function initRouteMaps() {
+    var secs = document.querySelectorAll(".route");
+    if (!secs.length) return;
+    var loading = null;
+    function loadLeaflet(cb) {
+      if (window.L) return cb();
+      if (loading) return loading.push(cb);
+      loading = [cb];
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+      document.head.appendChild(css);
+      var js = document.createElement("script");
+      js.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+      js.onload = function () { var q = loading; loading = null; q.forEach(function (f) { f(); }); };
+      js.onerror = function () {
+        secs.forEach(function (s) { s.classList.add("route--nomap"); });
+      };
+      document.head.appendChild(js);
+    }
+    function start(sec) {
+      if (sec.getAttribute("data-built")) return;
+      sec.setAttribute("data-built", "1");
+      loadLeaflet(function () { buildRouteMap(sec); });
+    }
+    if (!("IntersectionObserver" in window)) { secs.forEach(start); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { start(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: "300px 0px" });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+
   function renderDays() {
     $("#daybar").innerHTML = T.days.map(function (d) {
       return '<a href="#day-' + d.n + '" data-day="' + d.n + '"' + (d.n === todayDay ? ' class="is-today"' : "") + "><b>Day " + d.n + "</b><small>" + d.md + "</small></a>";
@@ -239,6 +440,7 @@
             (d.notes && d.notes.length ? '<ul class="day-notes">' + d.notes.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" : "") +
           "</div>" +
           '<div class="day-main">' +
+            routeHtml(d) +
             '<div class="tl-head"><h4>SCHEDULE</h4><div class="tl-legend">' +
               '<span><i style="background:var(--blue)"></i>景點</span><span><i style="background:var(--latte)"></i>餐飲</span>' +
               '<span><i style="background:var(--mocha)"></i>住宿</span><span><i style="border:1.5px solid var(--latte)"></i>交通</span></div></div>' +
@@ -480,6 +682,7 @@
   renderOverview();
   renderWeather();
   renderDays();
+  initRouteMaps();
   renderFood();
   renderShopping();
   renderTaxFree();
