@@ -210,13 +210,6 @@ window.PHOTO_CREDITS = {
   "source": "https://commons.wikimedia.org/wiki/File:Shoyu_ramen_-_Goemon_Ramen_Bar_2024-01-26.jpg",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
  },
- "sushi": {
-  "title": "Nigiri Sushi (25966163204).jpg",
-  "author": "Tim Reckmann from Hamm, Deutschland",
-  "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Nigiri_Sushi_(25966163204).jpg",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
- },
  "takimoto": {
   "title": "Dai-ichi Takimotokan.jpg",
   "author": "Jiashiang",
