@@ -168,7 +168,7 @@
   function spotCard(id) {
     var p = T.places[id];
     if (!p) return "";
-    var kind = p.kind === "food" ? "餐飲" : p.kind === "stay" ? "住宿" : "景點";
+    var kind = p.kind === "food" ? "餐飲" : p.kind === "stay" ? "住宿" : p.kind === "shop" ? "購物" : "景點";
     return '<article class="spot reveal">' +
       (p.img ? '<div class="spot-img"><img src="' + IMG + p.img + '.jpg" alt="' + esc(p.name) + '" loading="lazy" decoding="async">' +
         '<span class="spot-kind">' + kind + "</span>" +
@@ -302,8 +302,9 @@
   /* ---------- 購物 ---------- */
   function renderShopping() {
     $("#shopList").innerHTML = T.shopping.map(function (s) {
+      var links = s.place ? placeLinks(T.places[s.place]) : "";
       return '<li class="shop-item reveal"><span class="shop-when">' + esc(s.when) + '</span><span class="shop-where">' + esc(s.where) +
-        '</span><span class="shop-what">' + esc(s.what) + "</span>" + (s.flag ? flag(s.flag) : "") + "</li>";
+        '</span><span class="shop-what">' + esc(s.what) + (links ? '<span class="tl-links">' + links + '</span>' : "") + "</span>" + (s.flag ? flag(s.flag) : "") + "</li>";
     }).join("");
   }
 
