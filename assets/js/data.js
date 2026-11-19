@@ -57,6 +57,10 @@ window.TRIP = {
 
     station: { name: "JR 札幌站", zh: "Sapporo Station", kind: "spot", img: "station", map: "JR札幌駅" },
     tanuki: { name: "狸小路商店街", zh: "Tanukikoji", kind: "spot", img: "tanuki", note: "藥妝、便利商店都在這一帶。", map: "狸小路商店街" },
+    potapota: { name: "ぽたぽたいちご 本店", zh: "草莓大福・moyuk SAPPORO", kind: "food",
+      when: "12/17（四）19:00–19:15", status: "現場購買", statusTone: "calm",
+      note: "札幌市中央區南2条西3丁目20，moyuk SAPPORO 的 OMOTASE-HONPO 內。官網營業時間 10:00–21:00；逛完三越 UNIQLO 後順路買草莓大福，再走去大黑屋。口味、價格與供應以現場為準；若排隊較久，優先保留 19:30 晚餐訂位。",
+      map: "ぽたぽたいちご モユクサッポロ オモタセホンポ", links: [{ t: "官方商品／店舖資訊", u: "https://www.potapota15.com/" }] },
     daikokuya: { name: "旭川成吉思汗 大黒屋 札幌2號店", zh: "成吉思汗烤羊肉", kind: "food", img: "jingisukan", sample: true,
       when: "12/17（四）19:30", status: "已訂位", statusTone: "ok",
       note: "南5条西5丁目1-2 メイプル通りビル2F（薄野附近）。12/17 19:30 已訂位。",
@@ -76,10 +80,10 @@ window.TRIP = {
       links: [{ t: "2026 聖誕市集", u: "https://www.sapporo.travel/white-illumination/event/munich/" }] },
     tvtower: { name: "札幌電視塔", zh: "Sapporo TV Tower", kind: "spot", img: "tvtower", map: "さっぽろテレビ塔" },
     kplace: { name: "焼肉 徳寿 K-place", zh: "燒肉", kind: "food", img: "yakiniku", sample: true,
-      when: "12/18（五）18:30", status: "一個月前開放訂位", statusTone: "blue", note: "JR 札幌站附近「カメイ札幌駅前ビル10F」，預計 3 位大人。訂位在用餐日一個月前才開放，12/18 的位子預計 11/18 左右可以訂。",
+      when: "12/18（五）18:15–20:15", status: "已訂位", statusTone: "ok", note: "18:15 已確認訂位，用餐至 20:15。JR 札幌站附近「カメイ札幌駅前ビル10F」，預計 18:05 抵達。",
       map: "焼肉 徳寿 K-place", links: [{ t: "官方線上訂位", u: "https://yoyaku.toreta.in/k-place/" }, { t: "官網", u: "https://www.tokuju.com/shop/k-place/" }] },
     pal: { name: "Parfaiteria PaL", zh: "札幌夜芭菲", kind: "food", img: "parfait", sample: true,
-      when: "12/18（五）20:30", status: "不接受訂位", statusTone: "calm", note: "薄野、南4条西2丁目；18:00 開門；現場排隊，可能候位。",
+      when: "12/18（五）20:45", status: "不接受訂位", statusTone: "calm", note: "薄野、南4条西2丁目；18:00 開門；燒肉後預留約 30 分鐘交通，現場排隊，可能候位。",
       map: "Parfaiteria PaL 札幌", links: [{ t: "店家營業資訊", u: "https://yoru-parfait-gaku.com/parfait/shop-info/" }] },
 
     takinami: { name: "北のどんぶり屋 滝波食堂", zh: "三角市場・海鮮丼", kind: "food",
@@ -95,6 +99,10 @@ window.TRIP = {
     musicbox: { name: "小樽音樂盒堂", zh: "Otaru Music Box Museum", kind: "spot", img: "musicbox", note: "同一帶還有北一硝子（玻璃小物）。", map: "小樽オルゴール堂 本館" },
     letao: { name: "LeTAO 小樽洋菓子舖", zh: "起司蛋糕・下午茶", kind: "food", img: "letao",
       when: "12/19（六）午後", status: "現場購買", statusTone: "calm", note: "LeTAO 下午茶／起司蛋糕、買小樽伴手禮。", map: "小樽洋菓子舗ルタオ 本店" },
+    potapotaOtaru: { name: "ぽたぽたいちご 小樽堺町通り店", zh: "草莓大福・小樽備選", kind: "food",
+      when: "12/19（六）12:30–14:10 散步時，可選", status: "備選・有空再買", statusTone: "calm",
+      note: "小樽市堺町2-17，官網營業時間 11:00–17:00。第一天沒買到或想再吃，可在堺町通散步時順路買草莓大福；口味、價格與供應以現場為準。17:00 關店，安排在上天狗山前，不等夜景後再買。",
+      map: "ぽたぽたいちご 小樽堺町通り店 小樽市堺町2-17", links: [{ t: "官方商品／店舖資訊", u: "https://www.potapota15.com/" }] },
     tengu: { name: "天狗山纜車", zh: "夕陽與小樽夜景", kind: "spot", img: "tengu", when: "12/19（六）15:30–16:50",
       note: "日落約 16:04，纜車遇風雪可能停駛。小樽站搭中央巴士 9 號，冬季班次另查。", map: "小樽天狗山ロープウエイ" },
 
@@ -270,10 +278,10 @@ window.TRIP = {
   days: [
     {
       n: 1, date: "2026-12-17", md: "12.17", dow: "THU", dowZh: "四",
-      title: "抵達札幌", sub: "UNIQLO＋成吉思汗",
-      focus: "入住、UNIQLO 買保暖衣、19:30 大黑屋",
+      title: "抵達札幌", sub: "UNIQLO・草莓大福・成吉思汗",
+      focus: "入住、UNIQLO 買保暖衣、ぽたぽたいちご 草莓大福、19:30 大黑屋",
       cover: "tanuki",
-      spots: ["station", "granbell", "daikokuya", "tanuki"],
+      spots: ["station", "granbell", "potapota", "daikokuya", "tanuki"],
       timeline: [
         { t: "08:30", title: "台中機場集合", note: "原行程", type: "move" },
         { t: "10:20", t2: "15:00", title: "台中 → 新千歲機場（JX318）", note: "原航班時間，仍以機票為準", type: "move" },
@@ -281,15 +289,17 @@ window.TRIP = {
         { t: "16:30", t2: "17:30", title: "JR 快速 Airport 至札幌站，地鐵或步行至狸小路", note: "原先記錄 JR 自由席參考 ¥1,200，請以實際票價為準", type: "move", place: "station" },
         { t: "17:30", t2: "18:10", title: "GRANBELL HOTEL TANUKI, SAPPORO Check-in", note: "先放行李、休息", type: "stay", place: "granbell" },
         { t: "18:10", t2: "19:00", title: "UNIQLO 札幌三越店（本館 10 樓）", note: "大通地區，通常至 20:00；先買 HEATTECH／手套／襪子。若入境延遲，可改在 12/18 去", type: "shop", map: "ユニクロ 札幌三越店" },
+        { t: "19:00", t2: "19:15", title: "ぽたぽたいちご 本店：草莓大福", note: "從三越步行至 moyuk SAPPORO 的 OMOTASE-HONPO，買草莓大福；官網營業至 21:00。含移動與購買，若排隊較久就留到小樽店", type: "food", place: "potapota" },
+        { t: "19:15", t2: "19:30", title: "步行前往大黑屋札幌2號店", note: "從狸小路往薄野，預留雪地步行與入店時間", type: "move" },
         { t: "19:30", t2: "20:50", title: "旭川成吉思汗 大黒屋 札幌2號店", note: "薄野附近，19:30 已訂位", type: "food", place: "daikokuya" },
         { t: "21:00", t2: "後", title: "狸小路散步、便利商店或藥妝", note: "第一天主要休息，購物不必買太多", type: "shop", place: "tanuki" }
       ],
-      notes: ["大黑屋札幌2號店地址「南5条西5丁目1-2 メイプル通りビル2F」。"]
+      notes: ["大黑屋札幌2號店地址「南5条西5丁目1-2 メイプル通りビル2F」。", "草莓大福排在晚餐前購買；若航班延誤或店內排隊，優先趕上 19:30 大黑屋訂位，12/19 小樽堺町通店可作備案。"]
     },
     {
       n: 2, date: "2026-12-18", md: "12.18", dow: "FRI", dowZh: "五",
       title: "札幌北區＋市中心", sub: "諏訪神社・紅磚・SAMA・北大・燒肉・夜芭菲",
-      focus: "諏訪神社、紅磚廳舍與時計台、11:30 SAMA、北海道大學、抹茶咖啡、18:30 德壽燒肉、夜芭菲",
+      focus: "諏訪神社、紅磚廳舍與時計台、11:30 SAMA、北海道大學、抹茶咖啡、18:15 德壽燒肉（已訂位）、夜芭菲",
       cover: "akarenga",
       spots: ["suwa", "akarenga", "clock", "sama", "hokudai", "nanas", "xmas", "tvtower", "kplace", "pal"],
       timeline: [
@@ -304,10 +314,11 @@ window.TRIP = {
         { t: "14:00", t2: "14:20", title: "往 PARCO", note: "南北線 北12條 → 大通，步行到札幌 PARCO", type: "move" },
         { t: "14:20", t2: "15:20", title: "nana's green tea 札幌PARCO店（5F）", note: "抹茶拿鐵、抹茶聖代或甜點，店家以當季菜單為準", type: "food", place: "nanas" },
         { t: "15:20", t2: "17:30", title: "大通商圈、聖誕市集／白色燈樹節、札幌電視塔", note: "市集 2026/11/20–12/25，11:00–21:00；入夜拍燈飾", type: "spot", place: "xmas" },
-        { t: "17:30", t2: "18:20", title: "地鐵到札幌站", note: "前往 K-place，留候位時間", type: "move" },
-        { t: "18:30", t2: "20:00", title: "焼肉 徳寿 K-place", note: "預計 3 位大人，尚未訂位：一個月前才開放，預計 11/18 左右可訂。JR 札幌站附近「カメイ札幌駅前ビル10F」，官方線上訂位", type: "food", place: "kplace", flag: "c-reserve" },
-        { t: "20:30", t2: "21:30", title: "Parfaiteria PaL 札幌夜芭菲", note: "薄野、南4条西2丁目；18:00 開門；不接受一般訂位，現場排隊，可能候位", type: "food", place: "pal" },
-        { t: "21:30", t2: "後", title: "回狸小路飯店", note: "自由休息", type: "stay" }
+        { t: "17:30", t2: "18:05", title: "地鐵到札幌站、前往 K-place", note: "預計 18:05 抵達カメイ札幌駅前ビル10F，預留訂位前 10 分鐘", type: "move" },
+        { t: "18:15", t2: "20:15", title: "焼肉 徳寿 K-place", note: "18:15 已確認訂位，用餐至 20:15。JR 札幌站附近「カメイ札幌駅前ビル10F」", type: "food", place: "kplace" },
+        { t: "20:15", t2: "20:45", title: "札幌站 → 薄野，前往夜芭菲", note: "地鐵南北線到すすきの，步行前往 PaL；預留出店與雪地步行時間", type: "move" },
+        { t: "20:45", t2: "21:45", title: "Parfaiteria PaL 札幌夜芭菲", note: "薄野、南4条西2丁目；18:00 開門；不接受一般訂位，現場排隊，結束時間依候位狀況調整", type: "food", place: "pal" },
+        { t: "21:45", t2: "後", title: "回狸小路飯店", note: "自由休息", type: "stay" }
       ],
       notes: []
     },
@@ -316,12 +327,12 @@ window.TRIP = {
       title: "小樽一日遊", sub: "運河・堺町通・LeTAO・天狗山夕陽",
       focus: "11:30 CAFE' BAAL、運河、堺町通、LeTAO、天狗山夕陽及運河夜景",
       cover: "otaru-canal",
-      spots: ["takinami", "baal", "otaruCanal", "sakaimachi", "musicbox", "letao", "tengu"],
+      spots: ["takinami", "baal", "otaruCanal", "sakaimachi", "musicbox", "letao", "potapotaOtaru", "tengu"],
       timeline: [
         { t: "09:30", title: "飯店出發", note: "薄野搭南北線到札幌，轉 JR 快速 Airport 或普通車到小樽", type: "move" },
         { t: "10:30", t2: "11:15", title: "三角市場、小樽街區散步（滝波食堂可選）", note: "如果有時間有胃，可到三角市場的滝波食堂吃海鮮丼；不接受預約，需現場登記候位。若候位或用餐會影響 BAAL 就略過，11:15 左右前往 CAFE' BAAL 等候開門", type: "spot", place: "takinami" },
         { t: "11:30", t2: "12:30", title: "CAFE' BAAL 牛排飯", note: "11:30 開門；午間營業至 14:30，不接受預約，現場候位", type: "food", place: "baal" },
-        { t: "12:30", t2: "14:10", title: "小樽運河、堺町通、北一硝子、音樂盒堂、LeTAO", note: "LeTAO 下午茶／起司蛋糕、買小樽伴手禮；若午餐候位較久，縮短逛街時間", type: "spot", place: "sakaimachi" },
+        { t: "12:30", t2: "14:10", title: "小樽運河、堺町通、北一硝子、音樂盒堂、LeTAO", note: "LeTAO 下午茶／起司蛋糕、買小樽伴手禮。可選：ぽたぽたいちご 小樽堺町通り店（堺町2-17，11:00–17:00），第一天沒買到或想再吃草莓大福就順路買；若午餐候位較久，縮短逛街時間", type: "spot", place: "sakaimachi", links: [{ t: "草莓大福店舖資訊", u: "https://www.potapota15.com/" }] },
         { t: "約 14:25", title: "南小樽 → 小樽", note: "原計畫 JR 搭 1 站；若時間趕改計程車或縮短商店時間", type: "move" },
         { t: "14:50", t2: "15:30", title: "小樽站 → 天狗山", note: "中央巴士 9 號，冬季班次另查", type: "move" },
         { t: "15:30", t2: "16:50", title: "天狗山纜車、夕陽及夜景", note: "日落約 16:04，纜車遇風雪可能停駛", type: "spot", place: "tengu" },
@@ -329,7 +340,7 @@ window.TRIP = {
         { t: "18:00", t2: "18:40", title: "小樽運河夜間藍色點燈", note: "依當年度活動資訊與天氣", type: "spot", place: "otaruCanal" },
         { t: "19:00", t2: "後", title: "JR 回札幌＋晚餐", note: "晚餐待定，視體力安排壽司或拉麵", type: "food", flag: "c-dinner" }
       ],
-      notes: ["CAFE' BAAL 週二至週日 11:30–14:30、17:30–21:00，週一公休；午餐調整至 11:30，14:50 前往天狗山的安排不變。"]
+      notes: ["CAFE' BAAL 週二至週日 11:30–14:30、17:30–21:00，週一公休；午餐調整至 11:30，14:50 前往天狗山的安排不變。", "ぽたぽたいちご 小樽堺町通り店為草莓大福備選，官網營業時間 11:00–17:00；有空、有胃再買，安排在上天狗山前，保留原本的 LeTAO 與天狗山行程。"]
     },
     {
       n: 4, date: "2026-12-20", md: "12.20", dow: "SUN", dowZh: "日",
@@ -460,9 +471,11 @@ window.TRIP = {
   /* ---------------------------------------------------------------------- */
   shopping: [
     { where: "UNIQLO 札幌三越店（本館 10 樓）", when: "12/17 傍晚", what: "保暖衣、HEATTECH、襪子等；若航班晚點改 12/18" },
+    { where: "ぽたぽたいちご 本店（moyuk SAPPORO）", when: "12/17 19:00", what: "草莓大福；官網營業時間 10:00–21:00，排在 UNIQLO 後、大黑屋晚餐前" },
     { where: "nana's green tea 札幌PARCO 5 樓", when: "12/18 14:20", what: "抹茶甜點、抹茶拿鐵；PARCO 一般至 20:00" },
-    { where: "Parfaiteria PaL（薄野）", when: "12/18 20:30", what: "札幌夜芭菲，季節限定，不能預約；預留排隊時間" },
+    { where: "Parfaiteria PaL（薄野）", when: "12/18 20:45", what: "札幌夜芭菲，季節限定，不能預約；燒肉後預留交通與排隊時間" },
     { where: "LeTAO／北一硝子周邊", when: "12/19 小樽", what: "起司蛋糕、餅乾、玻璃小物" },
+    { where: "ぽたぽたいちご 小樽堺町通り店（備選）", when: "12/19 午後，可選", what: "堺町2-17，11:00–17:00；逛堺町通時順路買草莓大福，不延後前往天狗山" },
     { where: "狸小路藥妝店", when: "12/20 或 12/21 晚上", what: "松本清、札幌藥妝等；不要買超重，注意退稅、液體與行李" },
     { where: "白色戀人公園", when: "12/21 下午", what: "白色戀人餅乾、限定商品、霜淇淋" },
     { where: "札幌市區百貨地下街", when: "12/21 晚上", what: "六花亭、ROYCE'、札幌農學校、北菓樓等伴手禮；百貨約晚上 8 點打烊，先逛" },
@@ -478,7 +491,7 @@ window.TRIP = {
     { id: "suica", text: "西瓜卡" },
     { id: "daikokuya", done: true, text: "確認 12/17 19:30 大黑屋札幌2號店訂位", link: "https://yoyaku.toreta.in/daikokuya-sapporo2go", linkText: "官方預約頁" },
     { id: "sama", done: true, text: "確認 12/18 11:30 Soup Curry SAMA 大通店是否已訂位" },
-    { id: "kplace", text: "預約 12/18 18:30 德壽 K-place 燒肉，3 位（一個月前開放，預計 11/18 左右可訂）", link: "https://yoyaku.toreta.in/k-place/", linkText: "官方預約頁" },
+    { id: "kplace-confirmed", done: true, text: "已確認 12/18 18:15–20:15 德壽 K-place 燒肉訂位", link: "https://www.tokuju.com/shop/k-place/", linkText: "餐廳官網" },
     { id: "crab", done: true, text: "確認 12/21 場外市場帝王蟹店家（根室杉山水產 UME堂）", link: "https://maps.app.goo.gl/PvbUW3zJbGQ2npHG7", linkText: "地圖" },
     { id: "ma108", text: "核對 12/20 頭大佛公車真 108 冬季班表、藻岩山纜車天候", link: "https://transfer.navitime.biz/chuo-bus/pc/map/Top", linkText: "中央巴士查詢" },
     { id: "nobori-delivery-prep", text: "12/22 已選尼克斯直送第一滝本館：準備住宿確認資料、另裝隨身物品與下午用品", link: "https://nixe-aqua.com/guide/", linkText: "配送／寄存資訊" },
@@ -492,12 +505,11 @@ window.TRIP = {
      level: conflict（資訊矛盾）/ tight（時間偏緊）/ pending（待確認・待補）
      ---------------------------------------------------------------------- */
   confirms: [
-    { id: "c-reserve", level: "pending", title: "12/18 德壽 K-place 等開放訂位",
-      body: "12/17 19:30 大黑屋、12/18 11:30 SAMA 都已確認訂位。德壽 K-place 要在用餐日一個月前才開放訂位，12/18 18:30（3 位）的位子預計 11/18 左右可以訂，開放後盡快預約。", day: 2 },
     { id: "c-dinner", level: "pending", title: "晚餐待訂：12/19 未定、12/21 はちきょう本店尚未訂位" }
   ],
 
   links: [
+    { t: "ぽたぽたいちご 草莓大福・札幌／小樽店舖資訊", u: "https://www.potapota15.com/" },
     { t: "徳寿 K-place 官網", u: "https://www.tokuju.com/shop/k-place/" },
     { t: "德壽 K-place 預約", u: "https://yoyaku.toreta.in/k-place/" },
     { t: "大黑屋札幌2號店官方預約", u: "https://yoyaku.toreta.in/daikokuya-sapporo2go" },
