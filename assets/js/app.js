@@ -97,31 +97,6 @@
     }
   }
 
-  /* ---------- 簡介與旅行資訊 ---------- */
-  function renderPrologue() {
-    $("#introText").innerHTML = T.meta.intro.map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
-
-    var rows = [
-      ["日期", "2026/12/17（四）— 12/23（三）"],
-      ["天數", esc(T.meta.lengthText)],
-      ["人數", esc(T.meta.people)],
-      ["交通", "大眾運輸：JR・地鐵・市電・巴士<br><span style=\"color:var(--muted);font-size:13px\">不自駕</span>"],
-      ["住宿", "札幌 GRANBELL HOTEL TANUKI<br><span style=\"color:var(--muted);font-size:13px\">12/17–12/22・5 晚</span><br>登別 第一滝本館<br><span style=\"color:var(--muted);font-size:13px\">12/22・1 晚</span>"],
-      ["航班", "星宇航空 JX318 ／ JX319<br><span style=\"color:var(--muted);font-size:13px\">台中 RMQ ⇄ 新千歲 CTS</span>"],
-      ["區域", "札幌・小樽・登別"]
-    ];
-    $("#facts").innerHTML = rows.map(function (r) {
-      return '<div class="row"><dt>' + r[0] + "</dt><dd>" + r[1] + "</dd></div>";
-    }).join("");
-
-    var conflicts = T.confirms.filter(function (c) { return c.level === "conflict"; }).length;
-    $("#confirmStrip").outerHTML = T.confirms.length ?
-      '<a class="confirm-strip" id="confirmStrip" href="#confirm"><span class="ico">!</span><span>' +
-      "目前還有 <b>" + T.confirms.length + " 項</b>待確認或待補" + (conflicts ? "，其中 <b>" + conflicts + " 項是資訊矛盾</b>" : "") +
-      "。網站依 Notion 呈現，沒有擅自更改。" + '<br><span class="go">查看待確認清單</span></span></a>' : "";
-    $("#confirmCount").textContent = T.confirms.length;
-  }
-
   /* ---------- 航班 ---------- */
   function renderFlights() {
     $("#flightList").innerHTML = T.flights.map(function (f, i) {
@@ -347,6 +322,7 @@
 
   /* ---------- 待確認 ---------- */
   function renderConfirms() {
+    $("#confirmCount").textContent = T.confirms.length;
     $("#confirmList").innerHTML = T.confirms.map(function (c, i) {
       var lv = LEVEL[c.level] || LEVEL.pending;
       var tone = c.level === "conflict" ? "warn" : c.level === "tight" ? "calm" : "blue";
@@ -418,7 +394,6 @@
   }
 
   renderHero();
-  renderPrologue();
   renderFlights();
   renderOverview();
   renderDays();

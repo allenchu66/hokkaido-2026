@@ -206,37 +206,6 @@ strong { font-weight: 500; color: var(--espresso); }
 }
 .lead { color: var(--muted); font-size: 15px; margin: -10px 0 26px; }
 
-/* ---------- 旅行簡介 ---------- */
-.prologue { padding-top: 64px; }
-.prologue-grid { display: grid; gap: 36px; }
-#introText p { font-family: var(--f-serif); font-size: 16.5px; line-height: 2.05; color: var(--espresso); letter-spacing: .04em; }
-#introText p + p { margin-top: 1.1em; }
-#introText p:first-child::first-letter {
-  font-size: 2.6em; float: left; line-height: 1; padding: 6px 10px 0 0; color: var(--mocha);
-}
-.confirm-strip:empty { display: none; }
-.confirm-strip {
-  margin-top: 30px; display: flex; gap: 14px; align-items: flex-start;
-  padding: 16px 18px; border-radius: var(--radius); background: var(--warn-soft);
-  border: 1px solid rgba(165, 105, 79, .22); color: var(--espresso); font-size: 14.5px; line-height: 1.7;
-  text-decoration: none;
-}
-.confirm-strip .ico { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--warn); color: #FBF7F0; font-family: var(--f-en); font-size: 17px; font-weight: 600; }
-.confirm-strip b { font-weight: 500; }
-.confirm-strip .go { display: inline-block; margin-top: 4px; color: var(--warn); text-decoration: underline; text-underline-offset: 3px; }
-
-.facts { padding: 26px 24px 18px; background: var(--paper); position: relative; }
-.facts::before {
-  content: ""; position: absolute; inset: 8px; border: 1px dashed rgba(127, 101, 79, .22); border-radius: 13px; pointer-events: none;
-}
-.facts-title { font-family: var(--f-en); letter-spacing: .32em; font-size: 13px; color: var(--mocha); margin-bottom: 12px; }
-.facts dl { margin: 0; }
-.facts .row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
-.facts .row:first-child { border-top: 0; }
-.facts dt { font-size: 13px; color: var(--muted); letter-spacing: .12em; padding-top: 1px; }
-.facts dd { margin: 0; font-size: 15px; color: var(--espresso); line-height: 1.65; }
-.facts dd .flag { margin-top: 6px; }
-
 /* ---------- 標籤 ---------- */
 .chip {
   display: inline-flex; align-items: center; gap: 5px;
@@ -265,7 +234,6 @@ strong { font-weight: 500; color: var(--espresso); }
 .flag--tight::before { content: "·"; font-size: 16px; }
 
 /* ---------- 航班 ---------- */
-.flights-sec { padding-top: 24px; }
 .flights { display: grid; gap: 16px; }
 .ticket {
   position: relative; display: grid; grid-template-columns: 1fr; overflow: hidden;
@@ -603,8 +571,6 @@ figure { margin: 0; }
   .topnav a { font-size: 14.5px; padding: 7px 14px; }
   .hero-inner { padding-bottom: 88px; }
   .hero-zh { font-size: 19px; }
-  .prologue-grid { grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: start; }
-  .facts { position: sticky; top: calc(var(--nav-h) + 24px); }
   .ov-list { grid-template-columns: repeat(4, 1fr); }
   .ov-item a { grid-template-columns: 1fr; padding: 0; overflow: hidden; align-items: stretch; }
   .ov-thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 0; }
